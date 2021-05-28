@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('','AdminAuthController@index')->name('index');
+Route::get('','AdminController@index')->name('index');
+Route::get('highlights','AdminController@highlights')->name('highlights');
 		
 
 

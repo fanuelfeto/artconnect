@@ -8,8 +8,13 @@ use App\Providers\RouteServiceProvider;
 
 class AdminController extends Controller
 {
-    public function dashboard()
+    public function index()
     {
-    	return view('layouts.admin');
+    	return view('layouts.admin.admin');
     }
+
+    public function highlights()
+ 	{
+ 		return view('admin.highlights');
+ 	}
 }
