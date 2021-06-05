@@ -2,9 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
 
-Route::get('','AdminController@index')->name('index');
-Route::get('highlights','AdminController@highlights')->name('highlights');
-		
+
+	/* Auth Section | Login | Logout | Register */
+	Route::get('login','AdminAuthController@showLoginForm')->name('showLoginForm');
+	Route::post('login','AdminAuthController@login');
+	Route::post('logout','AdminAuthController@logout')->name('logout');
+	Route::get('register','AdminAuthController@showRegisterForm')->name('showRegisterForm');
+	Route::post('register','AdminAuthController@register')->name('register');
+});
 
 
