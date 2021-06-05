@@ -10,15 +10,15 @@
 
  	<title>@yield('title') | Artconnect</title>
  </head>
- <body class="c-app container-fluid">
+ <body class="c-app container">
   <div class="c-sidebar">
-  	
+  	@include('layouts.admin.admin_sidebar')
   </div>
   <div class="c-wrapper">
     <header class="c-header">
       @include('layouts.admin.admin_navbar')
     </header>
-    <div class="c-body">
+    <div class="c-body pl-3">
       <main class="c-main">
         @yield('content')
       </main>

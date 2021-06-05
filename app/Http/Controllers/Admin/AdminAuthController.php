@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controlllers\Controller;
+use Illuminate\Http\Request;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Response;
@@ -12,9 +12,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-use App\User
+use App\User;
 
-class AdminAuthController extends Controller
+class AdminAuthController extends \App\Http\Controllers\Controller
 {
 	use AuthenticatesUsers;
 
@@ -23,7 +23,7 @@ class AdminAuthController extends Controller
 
     public function __construct()
     {
-    	$this->middleware('guest:admin')->except(['logout','verify']);
+    	$this->middleware('guest:admin')->except(['logout']);
     } 
 
     public function showLoginForm()
@@ -39,10 +39,15 @@ class AdminAuthController extends Controller
     {
     	$request->validate([
     		'email' => 'required|string|max:255',
-    		'password' => 'required|string|max:255|min:8',
+    		'password' => 'required|min:8',
     	]);
 
-    	if (Auth::guard('admin')->attempt(['email'=>$request->email,'password'=>$request->password,'role_id'=>[1]],$request->remember))
+        // $credentials = $request->only('email','password');
+        // if (Auth::attempt($credentials)){
+        //     return redirect()->intended('admin.dashboard');
+        // }
+
+    	if (Auth::guard('admin')->attempt(['email'=>$request->email,'password'=>$request->password,'role_id'=>[1]]))
     	{
     		return redirect()->intended($this->redirectPath());
     	}
