@@ -45,8 +45,8 @@ class AdminController extends Controller
  			]);
 
  			$hightlight_items = HighlightItem::create([
- 				'item' => $item,
- 				'content' => $content,
+ 				'title' => $request->title,
+ 				'content' => $request->content,
  			]);
 
  			$picture1_path = public_path('/images/highlights');
@@ -56,7 +56,7 @@ class AdminController extends Controller
  			if ($request->file('picture1'))
  			{
  				$picture1 = $request->file('picture1');
- 				$picture1_name = 'highlight_' . $picture1->getClientOriginalExtension();
+ 				$picture1_name = 'highlight_.'.$picture1->getClientOriginalExtension();
  				$picture1->move($picture1_path,$picture1_name);
 
  				$highlight_items->picture1 = $picture1_name;

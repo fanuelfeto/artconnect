@@ -1,7 +1,7 @@
 @extends('layouts.admin.admin')
 @section('title','Input Highlights')
 @section('content')
-<form method="POST" action="{{ route('admin.createHighlights') }}">
+<form method="POST" action="{{ route('admin.createHighlights') }}" enctype="multipart/form-data">
   @csrf 
   <div class="form-group">
     <label for="title">Title</label>
@@ -9,7 +9,7 @@
   </div>
   <div class="form-group">
     <label for="content">Content</label>
-    <textarea class="form-control" id="content" name="content" rows="1" placeholder="Type the details of your highlights here"></textarea>
+    <textarea class="form-control" id="content" name="content" rows="3" placeholder="Type the details of your highlights here"></textarea>
   </div>
    <div class="form-group">
     <label for="picture1">Choose first picture...</label>
