@@ -14,5 +14,7 @@ class HighlightItem extends Model
     public $timestamps = true;
 
     protected $guarded = [];
+
+    protected $fillable = ['title','content','picture1','picture2','picture3','picture4'];
     
 }

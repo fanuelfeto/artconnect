@@ -18,6 +18,9 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
 	Route::get('highlights','AdminController@showHighlights')->name('highlights');
 	Route::get('showHighlightsForm','AdminController@showHighlightsForm')->name('showHighlightsForm');
 	Route::post('createHighlights','AdminController@createHighlights')->name('createHighlights');
+	Route::get('editHighlight/{id}','AdminController@showEditHighlightForm')->name('showEditHighlightForm');
+	Route::post('updateHighlight','AdminController@updateHighlight')->name('updateHighlight');
+	Route::get('highlightDetails/{id}','AdminController@highlightDetails')->name('highlightDetails');
 });
 
 
