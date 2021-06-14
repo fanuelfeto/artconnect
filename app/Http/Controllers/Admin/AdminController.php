@@ -158,7 +158,14 @@ class AdminController extends Controller
 		$highlight_item->picture4 = $picture4_name;
 		$highlight_item->save();
 
-		return redirect()->route('admin.highlightDetails',['id' => $request->id]);
+		return redirect()->route('admin.highlightDetails',array('id' => $request->id));
+
+ 	}
+
+ 	public function deleteHighlight(Request $request){
+
+ 		$highlight_item = HighlightItem::find($request->id);
+ 		$highlight_item->delete();
 
  	}
 

@@ -24,11 +24,17 @@
               </td>
               <td>
                 <a class="btn btn-success" href="{{ route('admin.showEditHighlightForm',['id' => $highlight_details->id]) }}">Edit</a>
-                <a class="btn btn-danger" href="#">Delete</a></td>
+                <a href="#" class="delete btn btn-danger" data-id="{{ $highlight_details->id }}">Delete</button>
+              </td>
             </tr>
           </tbody>
         </table>
     </div>
   </div>
 </body>
+
+<script>
+  
+
+</script>
 @endsection
