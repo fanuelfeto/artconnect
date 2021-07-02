@@ -1,34 +1,35 @@
-<div class="c-sidebar c-sidebar-dark c-sidebar-show">
   <ul class="c-sidebar-nav">
-    <li class="c-sidebar-nav-title">Nav Title</li>
+    <li class="c-sidebar-nav-title">ARTCONNECT</li>
     <li class="c-sidebar-nav-item">
-      <a class="c-sidebar-nav-link" href="#">
-        <i class="c-sidebar-nav-icon cil-speedometer"></i> Nav item
+      <a class="c-sidebar-nav-link" href="{{ route('admin.highlights') }}">
+        <i class="c-sidebar-nav-icon cil-speedometer"></i> Highlights
       </a>
     </li>
-    <li class="c-sidebar-nav-item">
-      <a class="c-sidebar-nav-link" href="#">
-        <i class="c-sidebar-nav-icon cil-speedometer"></i> With badge
-        <span class="badge badge-primary">NEW</span>
-      </a>
-    </li>
-    <li class="c-sidebar-nav-item nav-dropdown">
-      <a class="c-sidebar-nav-link nav-dropdown-toggle" href="#">
-        <i class="c-sidebar-nav-icon cil-puzzle"></i> Nav dropdown
+    <li class="c-sidebar-nav-item c-sidebar-nav-dropdown c-show">
+      <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
+        <i class="c-sidebar-nav-icon cil-puzzle"></i>Collections
       </a>
       <ul class="c-sidebar-nav-dropdown-items">
         <li class="c-sidebar-nav-item">
-          <a class="c-sidebar-nav-link" href="#">
-            <i class="c-sidebar-nav-icon cil-puzzle"></i> Nav dropdown item
+          <a class="c-sidebar-nav-link" href="{{ route('admin.showHomeAccessories') }}">
+            <i class="c-sidebar-nav-icon cil-puzzle"></i>Home Accessories
+          </a>
+        </li>
+        <li class="c-sidebar-nav-item">
+          <a class="c-sidebar-nav-link" href="{{ route('admin.showFurniture') }}">
+            <i class="c-sidebar-nav-icon cil-puzzle"></i>Furniture
           </a>
         </li>
         <li class="c-sidebar-nav-item">
           <a class="c-sidebar-nav-link" href="#">
-            <i class="c-sidebar-nav-icon cil-puzzle"></i> Nav dropdown item
+            <i class="c-sidebar-nav-icon cil-puzzle"></i>Paintings
+          </a>
+        </li>
+        <li class="c-sidebar-nav-item">
+          <a class="c-sidebar-nav-link" href="#">
+            <i class="c-sidebar-nav-icon cil-puzzle"></i>Sculpture 
           </a>
         </li>
       </ul>
     </li>
   </ul>
-  <button class="c-sidebar-minimizer c-brand-minimizer" type="button"></button>
-</div>

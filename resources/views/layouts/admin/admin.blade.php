@@ -10,12 +10,12 @@
 
  	<title>@yield('title') | Artconnect</title>
  </head>
- <body class="c-app container">
-  <div class="c-sidebar">
+ <body class="c-app">
+  <div class="c-sidebar c-sidebar-dark c-sidebar-show">
   	@include('layouts.admin.admin_sidebar')
   </div>
-  <div class="c-wrapper">
-    <header class="c-header">
+  <div class="c-wrapper c-fixed-components">
+    <header class="c-header c-header-light c-header-fixed c-header-with-subheader">
       @include('layouts.admin.admin_navbar')
     </header>
     <div class="c-body pl-3">
@@ -28,8 +28,6 @@
     </footer>
   </div>
 </body>
- <!-- Optional JavaScript -->
- <!-- Popper.js first, then CoreUI JS -->
  <script src="https://unpkg.com/@popperjs/core@2"></script>
  <script src="https://unpkg.com/@coreui/coreui/dist/js/coreui.min.js"></script>
  </body>

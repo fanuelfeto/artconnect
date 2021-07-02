@@ -20,8 +20,21 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
 	Route::post('createHighlights','AdminController@createHighlights')->name('createHighlights');
 	Route::get('editHighlight/{id}','AdminController@showEditHighlightForm')->name('showEditHighlightForm');
 	Route::post('updateHighlight','AdminController@updateHighlight')->name('updateHighlight');
-	Route::post('deleteHighlight','AdminController@deleteHighlight')->name('deleteHighlight');
+	Route::get('deleteHighlight/{id}','AdminController@deleteHighlight')->name('deleteHighlight');
 	Route::get('highlightDetails/{id}','AdminController@highlightDetails')->name('highlightDetails');
+
+
+	Route::get('collections/home_accessories','AdminController@showHomeAccessories')->name('showHomeAccessories');
+	Route::get('collections/home_accessories/showHomeAccessoriesForm','AdminController@showHomeAccessoriesForm')->name('showHomeAccessoriesForm');
+	Route::post('collection/createHomeAccessories','AdminController@createHomeAccessories')->name('createHomeAccessories');
+	Route::get('collections/home_accessories/showHomeAccessoriesEditForm/{id}','AdminController@showHomeAccessoriesEditForm')->name('showHomeAccessoriesEditForm');
+	Route::post('collections/updateHomeAccessories','AdminController@updateHomeAccessories')->name('updateHomeAccessories');
+
+
+	Route::get('collections/furniture','AdminController@showFurniture')->name('showFurniture');
+	Route::get('collection/furniture/showFunitureForm','AdminController@showFurnitureForm')->name('showFurnitureForm');
+	Route::post('collection/createFurniture','AdminController@createFurniture')->name('createFurniture');
+
 });
 
 
