@@ -42,8 +42,8 @@
             <img width="100" src="{{ asset('images/collections/furniture/'.$collection_item->picture3) }}"><br>
           </td>
           <td>
-            <a class="btn btn-success" href="#">Edit</a>
-            <a href="#" onclick="return confirm('Are sure want to delete this highlight?')"><button class="btn btn-danger">Delete</button></a>
+            <a class="btn btn-success" href="{{ route('admin.showFurnitureEditForm',['id' => $collection_item->id]) }}">Edit</a>
+            <a href="{{ route('admin.deleteFurniture',['id' => $collection_item->id]) }}" onclick="return confirm('Are sure want to delete this highlight?')"><button class="btn btn-danger">Delete</button></a>
           </td>
         </tr>
       </tbody>

@@ -1,5 +1,5 @@
 @extends('layouts.admin.admin')
-@section('title','Home Accessories')
+@section('title','Paintings')
 @section('content')
 <header class="c-header">
 	<div class="c-subheader px-3">
@@ -8,12 +8,12 @@
         	<li class="breadcrumb-item">Home</li>
             <li class="breadcrumb-item"><a href="#">Admin</a></li>
             <li class="breadcrumb-item">Dashboard</li>
-            <li class="breadcrumb-item active">Home Accessories</li>
+            <li class="breadcrumb-item active">Paintings</li>
             <!-- Breadcrumb Menu-->
         </ol>
      </div>
 </header>
-<a href="{{ route('admin.showHomeAccessoriesForm') }}" class="btn btn-success mb-3">Add New Item</a>
+<a href="{{ route('admin.showPaintingsForm') }}" class="btn btn-success mb-3">Add New Item</a>
 <div class="card">
   <div class="card-header"><i class="fa fa-align-justify"></i>Item Details</div>
   <div class="card-body">
@@ -37,13 +37,13 @@
           <td>{{ $collection_item->size }}</td>
           <td>{{ $collection_item->price }}</td>
           <td>
-            <img width="100" src="{{ asset('images/collections/home_accessories/'.$collection_item->picture1) }}"><br>
-            <img width="100" src="{{ asset('images/collections/home_accessories/'.$collection_item->picture2) }}"><br>
-            <img width="100" src="{{ asset('images/collections/home_accessories/'.$collection_item->picture3) }}"><br>
+            <img width="100" src="{{ asset('images/collections/paintings/'.$collection_item->picture1) }}"><br>
+            <img width="100" src="{{ asset('images/collections/paintings/'.$collection_item->picture2) }}"><br>
+            <img width="100" src="{{ asset('images/collections/paintings/'.$collection_item->picture3) }}"><br>
           </td>
           <td>
-            <a class="btn btn-success" href="{{ route('admin.showHomeAccessoriesEditForm',['id' => $collection_item->id]) }}">Edit</a>
-            <a href="{{ route('admin.deleteHomeAccessories',['id' => $collection_item->id]) }}" onclick="return confirm('Are you sure want to delete this collection?')"><button class="btn btn-danger">Delete</button></a>
+            <a class="btn btn-success" href="{{ route('admin.showPaintingsEditForm',['id' => $collection_item->id]) }}">Edit</a>
+            <a href="{{ route('admin.deletePaintings',['id' =>$collection_item->id]) }}" onclick="return confirm('Are you sure want to delete this collection?')"><button class="btn btn-danger">Delete</button></a>
           </td>
         </tr>
       </tbody>

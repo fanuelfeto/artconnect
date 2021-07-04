@@ -30,10 +30,10 @@
           <td>{{ $highlight_details->title }}</td>
           <td>{{ $highlight_details->content }}</td>
           <td>
-            <img width="150px" src="{{ asset('images/highlights/'.$highlight_details->picture1) }}"><br>
-            <img width="150px" src="{{ asset('images/highlights/'.$highlight_details->picture2) }}"><br>
-            <img width="150px" src="{{ asset('images/highlights/'.$highlight_details->picture3) }}"><br>
-            <img width="150px" src="{{ asset('images/highlights/'.$highlight_details->picture4) }}">
+            <img width="100" src="{{ asset('images/highlights/'.$highlight_details->picture1) }}"><br>
+            <img width="100" src="{{ asset('images/highlights/'.$highlight_details->picture2) }}"><br>
+            <img width="100" src="{{ asset('images/highlights/'.$highlight_details->picture3) }}"><br>
+            <img width="100" src="{{ asset('images/highlights/'.$highlight_details->picture4) }}">
           </td>
           <td>
             <a class="btn btn-success" href="{{ route('admin.showEditHighlightForm',['id' => $highlight_details->id]) }}">Edit</a>

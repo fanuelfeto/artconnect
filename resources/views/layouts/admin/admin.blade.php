@@ -6,7 +6,7 @@
 	 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 	 <!-- CoreUI CSS -->
-	 <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui/dist/css/coreui.min.css" crossorigin="anonymous">
+	 <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui@3.4.0/dist/css/coreui.min.css" crossorigin="anonymous">
 
  	<title>@yield('title') | Artconnect</title>
  </head>
