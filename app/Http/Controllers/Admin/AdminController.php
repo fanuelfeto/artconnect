@@ -51,34 +51,65 @@ class AdminController extends Controller
  				'picture4' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
  			]);
 
- 			$picture1 = $request->file('picture1');
- 			$picture1_name = time()."_".$picture1->getClientOriginalExtension();
- 			$picture1_path = public_path('/images/highlights');
- 			$picture1->move($picture1_path,$picture1_name);
-
- 			$picture2 = $request->file('picture2');
- 			$picture2_name = time()."_".$picture2->getClientOriginalExtension();
- 			$picture2_path = public_path('/images/highlights');
- 			$picture2->move($picture2_path,$picture2_name);
-
- 			$picture3 = $request->file('picture3');
- 			$picture3_name = time()."_".$picture3->getClientOriginalExtension();
- 			$picture3_path = public_path('/images/highlights');
- 			$picture3->move($picture3_path,$picture3_name);
-
- 			$picture4 = $request->file('picture4');
- 			$picture4_name = time()."_".$picture4->getClientOriginalExtension();
- 			$picture4_path = public_path('/images/highlights');
- 			$picture4->move($picture4_path,$picture4_name);
-
- 			HighlightItem::create([
+ 			$highlight_item = HighlightItem::create([
  				'title' => $request->title,
  				'content' => $request->content,
- 				'picture1' => $picture1_name,
- 				'picture2' => $picture2_name,
- 				'picture3' => $picture3_name,
- 				'picture4' => $picture4_name,
  			]);
+ 			
+ 			$picture_path = public_path('/images/highlights');
+ 			$picture_name = "";
+
+ 			if($request->file('picture1'))
+ 			{
+ 				$path_to_picture = $picture_path."/".$highlight_item->picture1;
+ 				File::delete($path_to_picture);
+
+ 				$picture = $request->file('picture1');
+ 				$picture_name = $highlight_item->id.'_picture_1.'.$picture->getClientOriginalExtension();
+ 				$picture->move($picture_path,$picture_name);
+
+ 				$highlight_item->picture1 = $picture_name;
+ 				$highlight_item->save();
+ 			}
+
+ 			if($request->file('picture2'))
+ 			{
+ 				$path_to_picture = $picture_path."/".$highlight_item->picture2;
+ 				File::delete($path_to_picture);
+
+ 				$picture = $request->file('picture2');
+ 				$picture_name = $highlight_item->id.'_picture_2.'.$picture->getClientOriginalExtension();
+ 				$picture->move($picture_path,$picture_name);
+
+ 				$highlight_item->picture2 = $picture_name;
+ 				$highlight_item->save();
+ 			}
+
+ 			if($request->file('picture3'))
+ 			{
+ 				$path_to_picture = $picture_path."/".$highlight_item->picture3;
+ 				File::delete($path_to_picture);
+
+ 				$picture = $request->file('picture3');
+ 				$picture_name = $highlight_item->id.'_picture_3.'.$picture->getClientOriginalExtension();
+ 				$picture->move($picture_path,$picture_name);
+
+ 				$highlight_item->picture3 = $picture_name;
+ 				$highlight_item->save();
+ 			}
+
+ 			if($request->file('picture4'))
+ 			{
+ 				$path_to_picture = $picture_path."/".$highlight_item->picture4;
+ 				File::delete($path_to_picture);
+
+ 				$picture = $request->file('picture4');
+ 				$picture_name = $highlight_item->id.'_picture_4.'.$picture->getClientOriginalExtension();
+ 				$picture->move($picture_path,$picture_name);
+
+ 				$highlight_item->picture4 = $picture_name;
+ 				$highlight_item->save();
+ 			}
 
  			//return view('admin.highlights');
  			return redirect()->route('admin.highlights');
@@ -117,7 +148,7 @@ class AdminController extends Controller
 		File::delete($path_to_picture1);
 
 		$picture1 = $request->file('picture1');
-		$picture1_name = time()."_".$picture1->getClientOriginalExtension();
+		$picture1_name = $highlight_item->id."_picture_1.".$picture1->getClientOriginalExtension();
 		$picture1->move($picture1_path, $picture1_name);
 
 		$highlight_item->picture1 = $picture1_name;
@@ -134,7 +165,7 @@ class AdminController extends Controller
 			File::delete($path_to_picture2);
 
 			$picture2 = $request->file('picture2');
-			$picture2_name = time()."_".$picture2->getClientOriginalExtension();
+			$picture2_name = $highlight_item->id."_picture_2.".$picture2->getClientOriginalExtension();
 			$picture2->move($picture2_path, $picture2_name);
 
 			$highlight_item->picture2 = $picture2_name;
@@ -151,7 +182,7 @@ class AdminController extends Controller
 		File::delete($path_to_picture3);
 
 		$picture3 = $request->file('picture3');
-		$picture3_name = time()."_".$picture3->getClientOriginalExtension();
+		$picture3_name = $highlight_item->id."_picture_3.".$picture3->getClientOriginalExtension();
 		$picture3->move($picture3_path, $picture3_name);
 
 		$highlight_item->picture3 = $picture1_name;
@@ -168,7 +199,7 @@ class AdminController extends Controller
 		File::delete($path_to_picture4);
 
 		$picture4 = $request->file('picture4');
-		$picture4_name = time()."_".$picture4->getClientOriginalExtension();
+		$picture4_name = $highlight_item->id."_picture4.".$picture4->getClientOriginalExtension();
 		$picture4->move($picture4_path, $picture4_name);
 
 		$highlight_item->picture4 = $picture4_name;
@@ -228,34 +259,58 @@ class AdminController extends Controller
  				'picture3' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
  			]);
 
- 			$picture1 = $request->file('picture1');
- 			$picture1_name = time()."_".$picture1->getClientOriginalExtension();
- 			$picture1_path = public_path('/images/collections/home_accessories');
- 			$picture1->move($picture1_path,$picture1_name);
-
- 			$picture2 = $request->file('picture2');
- 			$picture2_name = time()."_".$picture2->getClientOriginalExtension();
- 			$picture2_path = public_path('/images/collections/home_accessories');
- 			$picture2->move($picture2_path,$picture2_name);
-
- 			$picture3 = $request->file('picture3');
- 			$picture3_name = time()."_".$picture3->getClientOriginalExtension();
- 			$picture3_path = public_path('/images/collections/home_accessories');
- 			$picture3->move($picture3_path,$picture3_name);
-
  			$collection_item = CollectionItem::create([
  				'name' => $request->name,
  				'description' => $request->description,
  				'size' => $request->size,
  				'price' => $request->price,
- 				'picture1' => $picture1_name,
- 				'picture2' => $picture2_name,
- 				'picture3' => $picture3_name,
  				'collection_id' => $collection->id
  			]);
 
- 			//return view('admin.highlights');
- 			return redirect()->route('admin.showHomeAccessories');
+ 			$picture_path = public_path('/images/collections/home_accessories');
+ 			$picture_name = "";
+
+ 			if($request->file('picture1'))
+ 			{
+ 				$path_to_picture = $picture_path."/".$collection_item->picture1;
+ 				File::delete($path_to_picture);
+
+ 				$picture = $request->file('picture1');
+ 				$picture_name = $collection_item->id.'_picture_1.'.$picture->getClientOriginalExtension();
+ 				$picture->move($picture_path,$picture_name);
+
+ 				$collection_item->picture1 = $picture_name;
+ 				$collection_item->save();
+ 			}
+
+ 			if($request->file('picture2'))
+ 			{
+ 				$path_to_picture = $picture_path."/".$collection_item->picture2;
+ 				File::delete($path_to_picture);
+
+ 				$picture = $request->file('picture2');
+ 				$picture_name = $collection_item->id.'_picture_2.'.$picture->getClientOriginalExtension();
+ 				$picture->move($picture_path,$picture_name);
+
+ 				$collection_item->picture2 = $picture_name;
+ 				$collection_item->save();
+ 			}
+
+ 			if($request->file('picture3'))
+ 			{
+ 				$path_to_picture = $picture_path."/".$collection_item->picture3;
+ 				File::delete($path_to_picture);
+
+ 				$picture = $request->file('picture3');
+ 				$picture_name = $collection_item->id.'_picture_3.'.$picture->getClientOriginalExtension();
+ 				$picture->move($picture_path,$picture_name);
+
+ 				$collection_item->picture3 = $picture_name;
+ 				$collection_item->save();
+ 			}
+ 			
+			return redirect()->route('admin.showHomeAccessories');
+
  		//}
  	}
 
@@ -296,7 +351,7 @@ class AdminController extends Controller
 			File::delete($path_to_picture1);
 
 			$picture1 = $request->file('picture1');
-			$picture1_name = time()."_".$picture1->getClientOriginalExtension();
+			$picture1_name = $collection_item->id.'_picture_1.'.$picture1->getClientOriginalExtension();
 			$picture1->move($picture1_path, $picture1_name);
 
 			$collection_item->picture1 = $picture1_name;
@@ -312,7 +367,7 @@ class AdminController extends Controller
 			File::delete($path_to_picture2);
 
 			$picture2 = $request->file('picture2');
-			$picture2_name = time()."_".$picture2->getClientOriginalExtension();
+			$picture2_name = $collection_item->id.'_picture_2.'.$picture2->getClientOriginalExtension();
 			$picture2->move($picture2_path, $picture2_name);
 
 			$collection_item->picture2 = $picture2_name;
@@ -328,7 +383,7 @@ class AdminController extends Controller
 			File::delete($path_to_picture3);
 
 			$picture3 = $request->file('picture3');
-			$picture3_name = time()."_".$picture3->getClientOriginalExtension();
+			$picture3_name = $collection_item->id.'_picture_3.'.$picture3->getClientOriginalExtension();
 			$picture3->move($picture3_path, $picture3_name);
 
 			$collection_item->picture3 = $picture3_name;
@@ -379,31 +434,55 @@ class AdminController extends Controller
  				'picture3' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
  			]);
 
- 			$picture1 = $request->file('picture1');
- 			$picture1_name = time()."_".$picture1->getClientOriginalExtension();
- 			$picture1_path = public_path('/images/collections/furniture');
- 			$picture1->move($picture1_path,$picture1_name);
-
- 			$picture2 = $request->file('picture2');
- 			$picture2_name = time()."_".$picture2->getClientOriginalExtension();
- 			$picture2_path = public_path('/images/collections/furniture');
- 			$picture2->move($picture2_path,$picture2_name);
-
- 			$picture3 = $request->file('picture3');
- 			$picture3_name = time()."_".$picture3->getClientOriginalExtension();
- 			$picture3_path = public_path('/images/collections/furniture');
- 			$picture3->move($picture3_path,$picture3_name);
-
  			$collection_item = CollectionItem::create([
  				'name' => $request->name,
  				'description' => $request->description,
  				'size' => $request->size,
  				'price' => $request->price,
- 				'picture1' => $picture1_name,
- 				'picture2' => $picture2_name,
- 				'picture3' => $picture3_name,
  				'collection_id' => $collection->id
  			]);
+
+ 			$picture_path = public_path('/images/collections/furniture');
+ 			$picture_name = "";
+
+ 			if($request->file('picture1'))
+ 			{
+ 				$path_to_picture = $picture_path."/".$collection_item->picture1;
+ 				File::delete($path_to_picture);
+
+ 				$picture = $request->file('picture1');
+ 				$picture_name = $collection_item->id.'_picture_1.'.$picture->getClientOriginalExtension();
+ 				$picture->move($picture_path,$picture_name);
+
+ 				$collection_item->picture1 = $picture_name;
+ 				$collection_item->save();
+ 			}
+
+ 			if($request->file('picture2'))
+ 			{
+ 				$path_to_picture = $picture_path."/".$collection_item->picture2;
+ 				File::delete($path_to_picture);
+
+ 				$picture = $request->file('picture2');
+ 				$picture_name = $collection_item->id.'_picture_2.'.$picture->getClientOriginalExtension();
+ 				$picture->move($picture_path,$picture_name);
+
+ 				$collection_item->picture2 = $picture_name;
+ 				$collection_item->save();
+ 			}
+
+ 			if($request->file('picture3'))
+ 			{
+ 				$path_to_picture = $picture_path."/".$collection_item->picture3;
+ 				File::delete($path_to_picture);
+
+ 				$picture = $request->file('picture3');
+ 				$picture_name = $collection_item->id.'_picture_3.'.$picture->getClientOriginalExtension();
+ 				$picture->move($picture_path,$picture_name);
+
+ 				$collection_item->picture3 = $picture_name;
+ 				$collection_item->save();
+ 			}
 
  			return redirect()->route('admin.showFurniture');
  		//}
@@ -446,7 +525,7 @@ class AdminController extends Controller
 			File::delete($path_to_picture1);
 
 			$picture1 = $request->file('picture1');
-			$picture1_name = time()."_".$picture1->getClientOriginalExtension();
+			$picture1_name = $collection_item->id.'_picture_1.'.$picture1->getClientOriginalExtension();
 			$picture1->move($picture1_path, $picture1_name);
 
 			$collection_item->picture1 = $picture1_name;
@@ -462,7 +541,7 @@ class AdminController extends Controller
 			File::delete($path_to_picture2);
 
 			$picture2 = $request->file('picture2');
-			$picture2_name = time()."_".$picture2->getClientOriginalExtension();
+			$picture2_name = $collection_item->id.'_picture_2.'.$picture2->getClientOriginalExtension();
 			$picture2->move($picture2_path, $picture2_name);
 
 			$collection_item->picture2 = $picture2_name;
@@ -478,7 +557,7 @@ class AdminController extends Controller
 			File::delete($path_to_picture3);
 
 			$picture3 = $request->file('picture3');
-			$picture3_name = time()."_".$picture3->getClientOriginalExtension();
+			$picture3_name = $collection_item->id.'_picture_3.'.$picture3->getClientOriginalExtension();
 			$picture3->move($picture3_path, $picture3_name);
 
 			$collection_item->picture3 = $picture3_name;
@@ -528,31 +607,56 @@ class AdminController extends Controller
  				'picture3' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
  			]);
 
- 			$picture1 = $request->file('picture1');
- 			$picture1_name = time()."_".$picture1->getClientOriginalExtension();
- 			$picture1_path = public_path('/images/collections/paintings');
- 			$picture1->move($picture1_path,$picture1_name);
-
- 			$picture2 = $request->file('picture2');
- 			$picture2_name = time()."_".$picture2->getClientOriginalExtension();
- 			$picture2_path = public_path('/images/collections/paintings');
- 			$picture2->move($picture2_path,$picture2_name);
-
- 			$picture3 = $request->file('picture3');
- 			$picture3_name = time()."_".$picture3->getClientOriginalExtension();
- 			$picture3_path = public_path('/images/collections/paintings');
- 			$picture3->move($picture3_path,$picture3_name);
 
  			$collection_item = CollectionItem::create([
  				'name' => $request->name,
  				'description' => $request->description,
  				'size' => $request->size,
  				'price' => $request->price,
- 				'picture1' => $picture1_name,
- 				'picture2' => $picture2_name,
- 				'picture3' => $picture3_name,
  				'collection_id' => $collection->id
  			]);
+
+ 			$picture_path = public_path('/images/collections/paintings');
+ 			$picture_name = "";
+
+ 			if($request->file('picture1'))
+ 			{
+ 				$path_to_picture = $picture_path."/".$collection_item->picture1;
+ 				File::delete($path_to_picture);
+
+ 				$picture = $request->file('picture1');
+ 				$picture_name = $collection_item->id.'_picture_1.'.$picture->getClientOriginalExtension();
+ 				$picture->move($picture_path,$picture_name);
+
+ 				$collection_item->picture1 = $picture_name;
+ 				$collection_item->save();
+ 			}
+
+ 			if($request->file('picture2'))
+ 			{
+ 				$path_to_picture = $picture_path."/".$collection_item->picture2;
+ 				File::delete($path_to_picture);
+
+ 				$picture = $request->file('picture2');
+ 				$picture_name = $collection_item->id.'_picture_2.'.$picture->getClientOriginalExtension();
+ 				$picture->move($picture_path,$picture_name);
+
+ 				$collection_item->picture2 = $picture_name;
+ 				$collection_item->save();
+ 			}
+
+ 			if($request->file('picture3'))
+ 			{
+ 				$path_to_picture = $picture_path."/".$collection_item->picture3;
+ 				File::delete($path_to_picture);
+
+ 				$picture = $request->file('picture3');
+ 				$picture_name = $collection_item->id.'_picture_3.'.$picture->getClientOriginalExtension();
+ 				$picture->move($picture_path,$picture_name);
+
+ 				$collection_item->picture3 = $picture_name;
+ 				$collection_item->save();
+ 			}
 
  			return redirect()->route('admin.showPaintings');
  		//}
@@ -595,7 +699,7 @@ class AdminController extends Controller
 			File::delete($path_to_picture1);
 
 			$picture1 = $request->file('picture1');
-			$picture1_name = time()."_".$picture1->getClientOriginalExtension();
+			$picture1_name = $collection_item->id.'_picture_1.'.$picture1->getClientOriginalExtension();
 			$picture1->move($picture1_path, $picture1_name);
 
 			$collection_item->picture1 = $picture1_name;
@@ -611,7 +715,7 @@ class AdminController extends Controller
 			File::delete($path_to_picture2);
 
 			$picture2 = $request->file('picture2');
-			$picture2_name = time()."_".$picture2->getClientOriginalExtension();
+			$picture2_name = $collection_item->id.'_picture_2.'.$picture2->getClientOriginalExtension();
 			$picture2->move($picture2_path, $picture2_name);
 
 			$collection_item->picture2 = $picture2_name;
@@ -627,7 +731,7 @@ class AdminController extends Controller
 			File::delete($path_to_picture3);
 
 			$picture3 = $request->file('picture3');
-			$picture3_name = time()."_".$picture3->getClientOriginalExtension();
+			$picture3_name = $collection_item->id.'_picture_3.'.$picture3->getClientOriginalExtension();
 			$picture3->move($picture3_path, $picture3_name);
 
 			$collection_item->picture3 = $picture3_name;
@@ -678,31 +782,55 @@ class AdminController extends Controller
  				'picture3' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
  			]);
 
- 			$picture1 = $request->file('picture1');
- 			$picture1_name = time()."_".$picture1->getClientOriginalExtension();
- 			$picture1_path = public_path('/images/collections/sculpture');
- 			$picture1->move($picture1_path,$picture1_name);
-
- 			$picture2 = $request->file('picture2');
- 			$picture2_name = time()."_".$picture2->getClientOriginalExtension();
- 			$picture2_path = public_path('/images/collections/sculpture');
- 			$picture2->move($picture2_path,$picture2_name);
-
- 			$picture3 = $request->file('picture3');
- 			$picture3_name = time()."_".$picture3->getClientOriginalExtension();
- 			$picture3_path = public_path('/images/collections/sculpture');
- 			$picture3->move($picture3_path,$picture3_name);
-
  			$collection_item = CollectionItem::create([
  				'name' => $request->name,
  				'description' => $request->description,
  				'size' => $request->size,
  				'price' => $request->price,
- 				'picture1' => $picture1_name,
- 				'picture2' => $picture2_name,
- 				'picture3' => $picture3_name,
  				'collection_id' => $collection->id
  			]);
+
+ 			$picture_path = public_path('/images/collections/sculpture');
+ 			$picture_name = "";
+
+ 			if($request->file('picture1'))
+ 			{
+ 				$path_to_picture = $picture_path."/".$collection_item->picture1;
+ 				File::delete($path_to_picture);
+
+ 				$picture = $request->file('picture1');
+ 				$picture_name = $collection_item->id.'_picture_1.'.$picture->getClientOriginalExtension();
+ 				$picture->move($picture_path,$picture_name);
+
+ 				$collection_item->picture1 = $picture_name;
+ 				$collection_item->save();
+ 			}
+
+ 			if($request->file('picture2'))
+ 			{
+ 				$path_to_picture = $picture_path."/".$collection_item->picture2;
+ 				File::delete($path_to_picture);
+
+ 				$picture = $request->file('picture2');
+ 				$picture_name = $collection_item->id.'_picture_2.'.$picture->getClientOriginalExtension();
+ 				$picture->move($picture_path,$picture_name);
+
+ 				$collection_item->picture2 = $picture_name;
+ 				$collection_item->save();
+ 			}
+
+ 			if($request->file('picture3'))
+ 			{
+ 				$path_to_picture = $picture_path."/".$collection_item->picture3;
+ 				File::delete($path_to_picture);
+
+ 				$picture = $request->file('picture3');
+ 				$picture_name = $collection_item->id.'_picture_3.'.$picture->getClientOriginalExtension();
+ 				$picture->move($picture_path,$picture_name);
+
+ 				$collection_item->picture3 = $picture_name;
+ 				$collection_item->save();
+ 			}
 
  			return redirect()->route('admin.showSculpture');
  		//}
@@ -745,7 +873,7 @@ class AdminController extends Controller
 			File::delete($path_to_picture1);
 
 			$picture1 = $request->file('picture1');
-			$picture1_name = time()."_".$picture1->getClientOriginalExtension();
+			$picture1_name = $collection_item->id.'_picture_1.'.$picture1->getClientOriginalExtension();
 			$picture1->move($picture1_path, $picture1_name);
 
 			$collection_item->picture1 = $picture1_name;
@@ -761,7 +889,7 @@ class AdminController extends Controller
 			File::delete($path_to_picture2);
 
 			$picture2 = $request->file('picture2');
-			$picture2_name = time()."_".$picture2->getClientOriginalExtension();
+			$picture2_name = $collection_item->id.'_picture_2.'.$picture2->getClientOriginalExtension();
 			$picture2->move($picture2_path, $picture2_name);
 
 			$collection_item->picture2 = $picture2_name;
@@ -777,7 +905,7 @@ class AdminController extends Controller
 			File::delete($path_to_picture3);
 
 			$picture3 = $request->file('picture3');
-			$picture3_name = time()."_".$picture3->getClientOriginalExtension();
+			$picture3_name = $collection_item->id.'_picture_3.'.$picture3->getClientOriginalExtension();
 			$picture3->move($picture3_path, $picture3_name);
 
 			$collection_item->picture3 = $picture3_name;

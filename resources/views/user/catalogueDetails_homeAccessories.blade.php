@@ -1,0 +1,66 @@
+@extends('layouts.user.user')
+@section('title','Item Details')
+
+@section('content')
+<section class="feature_44 bg-light pt-100 text-center text-md-left">
+    <div class="container px-xl-0 mb-100">
+        <div class="mt-20 row justify-content-center justify-content-md-between align-items-end align-items-lg-start flex-row-reverse row2">
+            <div class="col-xl-1"></div>
+            <div class="col-lg-5 col-md-6 pb-60 pb-lg-0 inner2" data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">
+                <h2 class="mt-55 mb-30 small">{{ $collection_item->name }}</h2>
+                <div class="f-22 color-heading text-adaptive">
+                    {{ $collection_item->description }}<br><br><br>
+                </div>
+                <div class="f-18 text-adaptive">
+                    Size: {{ $collection_item->size }}<br>
+                    Price: Rp {{ number_format($collection_item->price, 0, ',', '.') }}
+                </div><br>
+
+            <form action="{{ route('addtoCart') }}" method="POST" enctype="multipart/form-data">
+			  @csrf
+			  <div class="product_count" style="font-size:20px;">
+			    <label for="qty">Quantity:</label>
+			    <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+
+			    <input type="hidden" name="product_id" value="{{ $collection_item->id }}" class="form-control">
+			    
+			    <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
+			    class="reduced items-count" type="button">
+			      <i class="lnr lnr-chevron-down">-</i>
+			    </button>
+			    <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+			    class="increase items-count" type="button">
+			      <i class="lnr lnr-chevron-up">+</i>
+			    </button>
+			  </div>
+			  <div class="card_area">
+			    <button type="submit" class="mt-30 btn border-gray color-main">Add to Cart</button>
+			  </div>
+			</form>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-xl-4 col-lg-5 col-md-5 col-sm-6 col-8" data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">
+            	<div class="wrapper">
+				  <nav class="lil-nav">
+				  	<a href="#picture1">
+				  		<img src="{{ asset('images/collections/home_accessories/'.$collection_item->picture1) }}" class="img-fluid img lil-nav__img" alt="" />
+				  	</a>
+				  	<a href="#picture2">
+				  		<img src="{{ asset('images/collections/home_accessories/'.$collection_item->picture2) }}" class="img-fluid img lil-nav__img" alt="" />
+				  	</a>
+				  	<a href="#picture3">
+				  		<img src="{{ asset('images/collections/home_accessories/'.$collection_item->picture3) }}" class="img-fluid img lil-nav__img" alt="" />
+				  	</a>
+				  </nav>
+				  <div class="gallery">
+				  	<img src="{{ asset('images/collections/home_accessories/'.$collection_item->picture1) }}" class="img-fluid img gallery__img" id="picture1" alt="" />
+				  	<img src="{{ asset('images/collections/home_accessories/'.$collection_item->picture2) }}" class="img-fluid img gallery__img" id="picture2" alt="" />
+				  	<img src="{{ asset('images/collections/home_accessories/'.$collection_item->picture3) }}" class="img-fluid img gallery__img" id="picture3" alt="" />
+				  </div>
+				</div>      
+            </div>
+            <div class="col-xl-1"></div>
+        </div>
+    </div>
+</section>
+@endsection

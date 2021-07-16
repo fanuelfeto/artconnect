@@ -2,6 +2,20 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::get('',function(){
+	return redirect()->route('dashboard');
+});
+
+Route::get('dashboard','UserPageController@dashboard')->name('dashboard');
+
+Route::get('home_accessories_catalogue','UserPageController@showHomeAccessoriesCatalogue')->name('showHomeAccessoriesCatalogue');
+Route::get('home_accessories_catalogue/details/{id}','UserPageController@homeAccessoriesCatalogueDetails')->name('homeAccessoriesCatalogueDetails');
+
+Route::post('cart','CartController@addtoCart')->name('addtoCart');
+Route::get('/cart','CartController@listCart')->name('listCart');
+Route::post('/cart/update','CartController@updateCart')->name('updateCart');
+
+
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
 
 	/* Dashboard Section */
@@ -28,8 +42,8 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
 	Route::get('collections/home_accessories/create','AdminController@showHomeAccessoriesForm')->name('showHomeAccessoriesForm');
 	Route::post('collection/create','AdminController@createHomeAccessories')->name('createHomeAccessories');
 	Route::get('collections/home_accessories/edit/{id}','AdminController@showHomeAccessoriesEditForm')->name('showHomeAccessoriesEditForm');
-	Route::post('collections/update','AdminController@updateHomeAccessories')->name('updateHomeAccessories');
-	Route::get('collections/delete/{id}','AdminController@deleteHomeAccessories')->name('deleteHomeAccessories');
+	Route::post('collections/home_accessories/update','AdminController@updateHomeAccessories')->name('updateHomeAccessories');
+	Route::get('collections/home_accessories/delete/{id}','AdminController@deleteHomeAccessories')->name('deleteHomeAccessories');
 
 
 	Route::get('collections/furniture','AdminController@showFurniture')->name('showFurniture');
