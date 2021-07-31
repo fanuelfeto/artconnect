@@ -5,12 +5,8 @@
 	<section class="banner_area">
 		<div class="banner_inner d-flex align-items-center">
 			<div class="container">
-				<div class="banner_content text-center">
-					<h2>Keranjang Belanja</h2>
-					<div class="page_link">
-                        <a href="{{ url('/') }}">Home</a>
-                        <a href="{{ route('listCart') }}">Cart</a>
-					</div>
+				<div class="banner_content text-center mt-20 mb-20">
+					<h3>Cart</h3>
 				</div>
 			</div>
 		</div>
@@ -18,30 +14,24 @@
 	<!--================End Home Banner Area =================-->
 
 	<!--================Cart Area =================-->
-	<section class="cart_area">
+	<section class="cart_area mb-80">
 		<div class="container">
 			<div class="cart_inner">
-        
-        <!-- DISABLE BAGIAN INI JIKA INGIN MELIHAT HASILNYA TERLEBIH DAHULU -->
-        <!-- KARENA MODULENYA AKAN DIKERJAKAN PADA SUB BAB SELANJUTNYA -->
-        <!-- HANYA SAJA DEMI KEMUDAHAN PENULISAN MAKA SAYA MASUKKAN PADA BAGIAN INI -->
                 <form action="{{ route('updateCart') }}" method="post">
                     @csrf
-        <!-- DISABLE BAGIAN INI JIKA INGIN MELIHAT HASILNYA TERLEBIH DAHULU -->
-                  
 				<div class="table-responsive">
 					<table class="table">
 						<thead>
 							<tr>
 								<th scope="col">Product</th>
+								<th></th>
 								<th scope="col">Price</th>
-								<th scope="col">Quantity</th>
-								<th scope="col">Total</th>
+								<th></th>
+								<th scope="col">Drop Item</th>
 							</tr>
 						</thead>
 						<tbody>
-              <!-- LOOPING DATA DARI VARIABLE CARTS -->
-                            @forelse ($carts as $row)
+                            @forelse ((array) $carts as $row)
 							<tr>
 								<td>
 									<div class="media">
@@ -66,35 +56,20 @@
                                             <img src="{{ asset('images/highlights/' . $row['product_image']) }}" width="100px" height="100px" alt="{{ $row['product_name'] }}">
 										</div>
 										@endif
-										<div class="media-body">
-                                            <p>{{ $row['product_name'] }}</p>
-										</div>
 									</div>
 								</td>
+								<td>
+									<div>
+                                            <p>{{ $row['product_name'] }}</p>
+									</div>
+								</td>
+								<input type="hidden" class="product_id" value="{{ $row['product_id'] }}" >
 								<td>
                                     <h5>Rp {{ number_format($row['product_price']) }}</h5>
 								</td>
+								<td></td>
 								<td>
-									<div class="product_count">
-                    
-                    
-                    <!-- PERHATIKAN BAGIAN INI, NAMENYA KITA GUNAKAN ARRAY AGAR BISA MENYIMPAN LEBIH DARI 1 DATA -->
-                                        <input type="text" name="qty[]" id="sst{{ $row['product_id'] }}" maxlength="12" value="{{ $row['qty'] }}" title="Quantity:" class="input-text qty">
-                                        <input type="hidden" name="product_id[]" value="{{ $row['product_id'] }}" class="form-control">
-                    <!-- PERHATIKAN BAGIAN INI, NAMENYA KITA GUNAKAN ARRAY AGAR BISA MENYIMPAN LEBIH DARI 1 DATA -->
-                    
-										<button onclick="var result = document.getElementById('sst{{ $row['product_id'] }}'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-										 class="reduced items-count" type="button">
-											<i class="lnr lnr-chevron-down">-</i>
-										</button>
-										<button onclick="var result = document.getElementById('sst{{ $row['product_id'] }}'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-										 class="increase items-count" type="button">
-											<i class="lnr lnr-chevron-up">+</i>
-										</button>
-									</div>
-								</td>
-								<td>
-                                    <h5>Rp {{ number_format($row['product_price'] * $row['qty']) }}</h5>
+									<a href="#" onclick="return confirm('Are sure want to cancel this order')" class="btn-danger delete_cart_data">Delete</a>
 								</td>
                             </tr>
                             @empty
@@ -102,79 +77,16 @@
                                 <td colspan="4">Tidak ada belanjaan</td>
                             </tr>
                             @endforelse
-							<tr class="bottom_button">
-								<td>
-									<button class="gray_btn">Update Cart</button>
-								</td>
-								<td></td>
-								<td></td>
-								<td></td>
-                            </tr>
                             </form>
 							<tr>
 								<td>
-
-								</td>
-								<td>
-
-								</td>
-								<td>
 									<h5>Subtotal</h5>
 								</td>
+								<td></td>
 								<td>
                                     <h5>Rp {{ number_format($subtotal) }}</h5>
 								</td>
-							</tr>
-							{{-- <tr class="shipping_area">
 								<td></td>
-								<td></td>
-								<td>
-									<h5>Shipping</h5>
-								</td>
-								<td>
-									<div class="shipping_box">
-										<ul class="list">
-											<li>
-												<a href="#">Flat Rate: $5.00</a>
-											</li>
-											<li>
-												<a href="#">Free Shipping</a>
-											</li>
-											<li>
-												<a href="#">Flat Rate: $10.00</a>
-											</li>
-											<li class="active">
-												<a href="#">Local Delivery: $2.00</a>
-											</li>
-										</ul>
-										<h6>Calculate Shipping
-											<i class="fa fa-caret-down" aria-hidden="true"></i>
-										</h6>
-										<select class="shipping_select">
-											<option value="1">Bangladesh</option>
-											<option value="2">India</option>
-											<option value="4">Pakistan</option>
-										</select>
-										<select class="shipping_select">
-											<option value="1">Select a State</option>
-											<option value="2">Select a State</option>
-											<option value="4">Select a State</option>
-										</select>
-										<input type="text" placeholder="Postcode/Zipcode">
-										<a class="gray_btn" href="#">Update Details</a>
-									</div>
-								</td>
-							</tr> --}}
-							<tr class="out_button_area">
-								<td></td>
-								<td></td>
-								<td></td>
-								<td>
-									<div class="checkout_btn_inner">
-										<a class="gray_btn" href="#">Continue Shopping</a>
-										<a class="main_btn" href="#">Proceed to checkout</a>
-									</div>
-								</td>
 							</tr>
 						</tbody>
 					</table>
@@ -182,5 +94,34 @@
 			</div>
 		</div>
 	</section>
+
+<script>
+	 $(document).ready(function () {
+
+        $('.delete_cart_data').click(function (e) {
+            e.preventDefault();
+
+            var product_id = $(this).closest(".cartpage").find('.product_id').val();
+
+            var data = {
+                '_token': $('input[name=_token]').val(),
+                "product_id": product_id,
+            };
+
+            // $(this).closest(".cartpage").remove();
+
+            $.ajax({
+                url: '/delete-from-cart',
+                type: 'DELETE',
+                data: data,
+                success: function (response) {
+                    window.location.reload();
+                }
+            });
+        });
+
+    });
+
+</script>
 	<!--================End Cart Area =================-->
 @endsection

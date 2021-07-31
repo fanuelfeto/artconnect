@@ -16,25 +16,15 @@
                     Price: Rp {{ number_format($collection_item->price, 0, ',', '.') }}
                 </div><br>
 
-            <form action="{{ route('addtoCart') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('addtoCart') }}" method="POST" enctype="multipart/form-data" id="add-to-cart">
 			  @csrf
 			  <div class="product_count" style="font-size:20px;">
-			    <label for="qty">Quantity:</label>
-			    <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+			    <sup>*limited to 1 item only</sup>
 
 			    <input type="hidden" name="product_id" value="{{ $collection_item->id }}" class="form-control">
-			    
-			    <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-			    class="reduced items-count" type="button">
-			      <i class="lnr lnr-chevron-down">-</i>
-			    </button>
-			    <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-			    class="increase items-count" type="button">
-			      <i class="lnr lnr-chevron-up">+</i>
-			    </button>
 			  </div>
 			  <div class="card_area">
-			    <button type="submit" class="mt-30 btn border-gray color-main">Add to Cart</button>
+			    <button type="submit" class="mt-30 btn border-gray color-main" id="btn-submit">Add to Cart</button>
 			  </div>
 			</form>
             </div>
@@ -63,4 +53,19 @@
         </div>
     </div>
 </section>
+
+<script type="text/javascript">
+   
+    $(document).ready(function () {
+    
+        $("#add-to-cart").submit(function (e) {
+   
+            $("#btn-submit").attr("disabled", true);
+   
+            return true;
+    
+        });
+    });
+    
+</script>
 @endsection

@@ -8,12 +8,20 @@ Route::get('',function(){
 
 Route::get('dashboard','UserPageController@dashboard')->name('dashboard');
 
+Route::get('login','UserAuthController@showLoginForm')->name('login');
+
+
+Route::get('highlights_catalogue','UserPageController@showHighlightCatalogue')->name('showHighlightCatalogue');
+
 Route::get('home_accessories_catalogue','UserPageController@showHomeAccessoriesCatalogue')->name('showHomeAccessoriesCatalogue');
 Route::get('home_accessories_catalogue/details/{id}','UserPageController@homeAccessoriesCatalogueDetails')->name('homeAccessoriesCatalogueDetails');
 
+Route::get('highlights_catalogue','UserPageController@showHighlightsCatalogue')->name('showHighlightsCatalogue');
+
 Route::post('cart','CartController@addtoCart')->name('addtoCart');
-Route::get('/cart','CartController@listCart')->name('listCart');
-Route::post('/cart/update','CartController@updateCart')->name('updateCart');
+Route::get('cart','CartController@listCart')->name('listCart');
+Route::post('cart/update','CartController@updateCart')->name('updateCart');
+Route::get('cart/delete','CartController@deleteCart')->name('deleteCart');
 
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {

@@ -8,47 +8,41 @@ use App\CollectionItem;
 
 class CartController extends Controller
 {
+
 public function addToCart(Request $request)
 {
 
     $this->validate($request, [
         'product_id' => 'required',
-        'qty' => 'required|integer'
     ]);
 
     $carts = json_decode($request->cookie('dw-carts'), true); 
   
-    if ($carts && array_key_exists($request->product_id, $carts)) {
-        //MAKA UPDATE QTY-NYA BERDASARKAN PRODUCT_ID YANG DIJADIKAN KEY ARRAY
-        $carts[$request->product_id]['qty'] += $request->qty;
-    } else {
-        //SELAIN ITU, BUAT QUERY UNTUK MENGAMBIL PRODUK BERDASARKAN PRODUCT_ID
-        $product = CollectionItem::find($request->product_id);
-        //TAMBAHKAN DATA BARU DENGAN MENJADIKAN PRODUCT_ID SEBAGAI KEY DARI ARRAY CARTS
-        $carts[$request->product_id] = [
-            'qty' => $request->qty,
+    $product = CollectionItem::find($request->product_id);
+    
+    $carts[$request->product_id] = [
+            'qty' => 1,
             'product_id' => $product->id,
             'product_name' => $product->name,
             'product_price' => $product->price,
             'product_image' => $product->picture1,
             'collection_id' => $product->collection_id
-        ];
-    }
+    ];
 
-    $cookie = cookie('dw-carts', json_encode($carts), 2880);
+    $cookie = cookie('dw-carts', json_encode($carts), 60);
  
     return redirect()->back()->cookie($cookie);
 }
 
 public function listCart()
 {
-    //MENGAMBIL DATA DARI COOKIE
+
     $carts = json_decode(request()->cookie('dw-carts'), true);
-    //UBAH ARRAY MENJADI COLLECTION, KEMUDIAN GUNAKAN METHOD SUM UNTUK MENGHITUNG SUBTOTAL
+
     $subtotal = collect($carts)->sum(function($q) {
-        return $q['qty'] * $q['product_price']; //SUBTOTAL TERDIRI DARI QTY * PRICE
+        return $q['product_price']; 
     });
-    //LOAD VIEW CART.BLADE.PHP DAN PASSING DATA CARTS DAN SUBTOTAL
+
     return view('user.cart', compact('carts', 'subtotal'));
     
 }
@@ -63,7 +57,35 @@ public function updateCart(Request $request)
                 $carts[$row]['qty'] = $request->qty[$key];
             }
         }
-        $cookie = cookie('dw-carts', json_encode($carts), 2880);
+        $cookie = cookie('dw-carts', json_encode($carts), 60);
         return redirect()->back()->cookie($cookie);
     }
+
+public function deleteCart(Request $request)
+    {
+        $prod_id = $request->input('product_id');
+
+        $cookie_data = stripslashes(Cookie::get('dw-carts'));
+        $cart_data = json_decode($cookie_data, true);
+
+        $item_id_list = array_column($cart_data, 'product_id');
+        $prod_id_is_there = $prod_id;
+
+        if(in_array($prod_id_is_there, $item_id_list))
+        {
+            foreach($cart_data as $keys => $values)
+            {
+                if($cart_data[$keys]["product_id"] == $prod_id)
+                {
+                    unset($cart_data[$keys]);
+                    $item_data = json_encode($cart_data);
+                    $minutes = 60;
+                    Cookie::queue(Cookie::make('dw-carts', $item_data, $minutes));
+                    return response()->json(['status'=>'Item Removed from Cart']);
+                }
+            }
+        }
+
+    }
 }
+

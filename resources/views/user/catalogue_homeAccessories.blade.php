@@ -35,8 +35,8 @@
                             <img class="card-img-top" height="250" src="{{ asset('images/collections/home_accessories/'.$collection_item->picture1) }}" alt="..." />
                             <div class="card-body p-4">
                                 <div class="text-center">
-                                    <h5 class="fw-bolder">{{$collection_item->name}}</h5>
-                                    {{$collection_item->description}}
+                                    <h5 class="fw-bolder">{{$highlight_item->name}}</h5>
+                                    {{$highlight_item->description}}
                                 </div>
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">

@@ -29,4 +29,11 @@ class UserPageController extends Controller
 
         return view('user.catalogueDetails_homeAccessories',compact('collection_item'));
     }
+
+    public function showHighlightsCatalogue()
+    {
+        $highlight_items = HighlightItem::first();
+
+        return view('user.catalogue_highlights',compact('highlight_items'));
+    }
 }
