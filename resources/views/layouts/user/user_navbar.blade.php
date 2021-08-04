@@ -16,7 +16,8 @@
                
                 <a href="{{ route('listCart') }}" class="btn btn-outline-light" >
                         Cart
-                        <span class="badge text-black ms-1 rounded-pill">0</span>
+                        @inject('count', 'App\Services\CountingService')
+                        <span class="badge text-black ms-1 rounded-pill">{{ $count->itemsInCart() }}</span>
                     </a>
                 </div>
               <!--   <form method="GET" action="/" class="ml-15 mt-10 mt-md-0 d-inline-block">
