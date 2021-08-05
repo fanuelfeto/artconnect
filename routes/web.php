@@ -22,10 +22,14 @@ Route::post('cart','CartController@addtoCart')->name('addtoCart');
 Route::get('cart','CartController@listCart')->name('listCart');
 Route::post('cart/update','CartController@updateCart')->name('updateCart');
 Route::get('cart/delete','CartController@deleteCart')->name('deleteCart');
-
 Route::get('cart/payment_form','CartController@showPaymentForm')->name('showPaymentForm');
 Route::post('cart/create_payment_form','CartController@createPaymentForm')->name('createPaymentForm');
 
+Route::get('upload-payment','PaymentController@index')->name('payment.index');
+Route::post('check-order','PaymentController@checkOrder')->name('payment.checkOrder');
+Route::get('upload-payment/{order_id}','PaymentController@showUploadPaymentForm')->name('payment.showUploadPaymentForm');
+Route::post('upload-payment/','PaymentController@uploadPayment')->name('payment.uploadPayment');
+Route::post('cancel-order/','PaymentController@cancelOrder')->name('payment.cancelOrder');
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
 

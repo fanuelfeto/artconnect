@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Collection extends Model
+class Order extends Model
 {
-	protected $table = "collections";
+	protected $table = "orders";
 	protected $primaryKey = "id";
 	protected $perPage = 25;
 
@@ -15,12 +15,8 @@ class Collection extends Model
 
 	protected $guarded = [];
 
-	protected $fillable = ['name'];
-
-
-	public function collectionItem(){
-
-		return $this->hasMany('App\CollectionItem');
-
+	public function orderItem()
+	{
+		return $this->hasMany('App\OrderItem');
 	}
 }
