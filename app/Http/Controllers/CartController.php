@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 
 use App\CollectionItem;
+use App\Tempuser;
 
 class CartController extends Controller
 {
@@ -97,8 +98,16 @@ class CartController extends Controller
  				'name' => 'required',
  				'email' => 'required|email',
  				'phone_number' => 'required|integer',
- 				'address' => 'required',
- 				
+ 				'address' => 'required',	
  			]);
+
+		$temp_user = Tempuser::create([
+			'name' => $request->name,
+			'email' => $request->email,
+			'phone_number' => $request->phone_number,
+			'address' => $request->address,
+		]);
+
+		return view('user.cart');
 	}
 }

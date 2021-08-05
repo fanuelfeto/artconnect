@@ -8,10 +8,11 @@
 				<h2 class="mb-55 small text-center" data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">Identity Form</h2><br>
 				<h5>Please fill this form before process the payment</h5>
 				<form action="{{ route('createPaymentForm') }}" method="post">
+					@csrf
 					<div class="mb-30 px-65 pt-45 pb-45 radius10 js-form-block" data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">
 						<div class="ml-30 inner">
 							<div class="w-370 block">
-								<input type="text" name="username" placeholder="Your fullname" class="mt-25 input w-full border-gray focus-action-1 color-heading placeholder-heading" />
+								<input type="text" name="name" placeholder="Your fullname" class="mt-25 input w-full border-gray focus-action-1 color-heading placeholder-heading" />
 							</div>
 						</div>
 						<div class="ml-30 inner">
@@ -21,7 +22,7 @@
 						</div>
 						<div class="ml-30 inner">
 							<div class="w-370 block">
-								<input type="text" name="notelp" placeholder="Phone Number" class="mt-25 input w-full border-gray focus-action-1 color-heading placeholder-heading"/>
+								<input type="text" name="phone_number" placeholder="Phone Number" class="mt-25 input w-full border-gray focus-action-1 color-heading placeholder-heading"/>
 							</div>
 						</div>
 						<div class="ml-30 inner">
