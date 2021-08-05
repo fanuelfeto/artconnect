@@ -31,7 +31,7 @@
 							</div>
 						</div>
 						<div class="ml-30 mt-30 inner">
-							<a href="#" class="btn action-1">Process</a>
+							<button type="submit" class="btn action-1">Process</button>
 						</div>
 					</div>
 				</form>
