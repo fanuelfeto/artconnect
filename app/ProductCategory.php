@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class HighlightItem extends Model
+class ProductCategory extends Model
 {
-	protected $table = "highlight_items";
+	protected $table = "product_categories";
 	protected $primaryKey = "id";
 	protected $perPage = 25;
 
@@ -15,6 +15,8 @@ class HighlightItem extends Model
 
 	protected $guarded = [];
 
-	protected $fillable = ['title','content','picture1','picture2','picture3','picture4'];
-	
+	public function product()
+	{
+		return $this->hasMany('App\Product');
+	}
 }

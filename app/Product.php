@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CollectionItem extends Model
+class Product extends Model
 {
-	protected $table = "collection_items";
+	protected $table = "products";
 	protected $primaryKey = "id";
 	protected $perPage = 25;
 
@@ -15,11 +15,14 @@ class CollectionItem extends Model
 
 	protected $guarded = [];
 
-	protected $fillable = ['name','description','size','price','picture1','picture2','picture3','collection_id'];
-
-	public function collectionItem()
+	public function productCategory()
 	{
-		return $this->belongsTo('App\Collection');
+		return $this->belongsTo('App\ProductCategory');
+	}
+
+	public function productGallery()
+	{
+		return $this->hasMany('App\ProductGallery');
 	}
 
 	public function orderItem()

@@ -23,7 +23,8 @@ class User extends Authenticatable
 		'password','activation_token','remember_token',
 	];
 
-	public function role(){
-		return $this->hasOne('App\Role');
+	public function role()
+	{
+		return $this->belongsTo('App\Role');
 	}
 }

@@ -78,8 +78,8 @@
 					@foreach ($order->orderItem()->get() as $order_item)
 					<li>
 						<div class="d-flex justify-content-between">
-							<span>{{ $order_item->collectionItem->name }} &times;{{ $order_item->quantity }}</span>
-							<span>Rp {{ number_format($order_item->collectionItem->price * $order_item->quantity , 0, ',', '.') }}</span>
+							<span>{{ $order_item->product->name }} &times;{{ $order_item->quantity }}</span>
+							<span>Rp {{ number_format($order_item->price * $order_item->quantity , 0, ',', '.') }}</span>
 						</div>
 					</li>
 					@endforeach
