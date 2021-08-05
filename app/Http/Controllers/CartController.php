@@ -90,4 +90,15 @@ class CartController extends Controller
 	{
 		return view('user.payment_form');
 	}
+
+	public function createPaymentForm(Request $request)
+	{
+		$request->validate([
+ 				'name' => 'required',
+ 				'email' => 'required|email',
+ 				'phone_number' => 'required|integer',
+ 				'address' => 'required',
+ 				
+ 			]);
+	}
 }
