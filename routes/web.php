@@ -23,6 +23,9 @@ Route::get('cart','CartController@listCart')->name('listCart');
 Route::post('cart/update','CartController@updateCart')->name('updateCart');
 Route::get('cart/delete','CartController@deleteCart')->name('deleteCart');
 
+Route::get('cart/payment_form','CartController@showPaymentForm')->name('showPaymentForm');
+Route::post('cart/create_payment_form','CartController@createPaymentForm')->name('createPaymentForm');
+
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
 

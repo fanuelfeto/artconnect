@@ -85,4 +85,9 @@ class CartController extends Controller
 			}
 		}
 	}
+
+	public function showPaymentForm()
+	{
+		return view('user.payment_form');
+	}
 }

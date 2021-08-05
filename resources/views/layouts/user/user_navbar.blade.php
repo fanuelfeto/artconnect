@@ -12,7 +12,6 @@
                 <a href="#" class="link color-white mx-15">Furniture</a>
                 <a href="#" class="link color-white mx-15">Paintings</a>
                 <a href="#" class="link color-white mx-15">Sculpture</a>
-                <a href="#" class="link color-white mx-15">Login</a>
                
                 <a href="{{ route('listCart') }}" class="btn btn-outline-light" >
                         Cart

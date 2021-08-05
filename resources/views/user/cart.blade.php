@@ -90,6 +90,7 @@
 						</tr>
 					</tbody>
 				</table>
+				<a href="{{ route('showPaymentForm') }}" class="btn action-1">Checkout</a>
 			</div>
 		</div>
 	</div>
