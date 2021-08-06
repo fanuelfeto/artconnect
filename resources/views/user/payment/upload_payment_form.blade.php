@@ -16,10 +16,21 @@
 <!--================Cart Area =================-->
 <section class="cart_area mb-80">
 	<div class="container">
+		@if ($order->status == "A" || $order->status == "P")
+		<div class="alert alert-warning small">
+			<strong>PERHATIKAN DENGAN SEKSAMA!</strong><br>
+			Mohon untuk mengingat Order ID Anda agar Anda dapat mengakses kembali halaman ini. Atau Anda juga dapat menyalin tautan/link pada halaman ini.<br><br>
+			Anda dapat mengakses kembali halaman ini dengan cara:
+			<ol>
+				<li>Klik menu <strong>Upload Payment</strong>.</li>
+				<li>Masukkan Order ID dan tekan tombol Check.</li>
+			</ol>
+		</div>
+		@endif
 		<div class="row">
 			<div class="col-md-6">
 				<table cellpadding="5">
-					<tr>
+					<tr class="font-weight-bold">
 						<td>Order ID</td>
 						<td>:</td>
 						<td>{{ $order->id }}</td>

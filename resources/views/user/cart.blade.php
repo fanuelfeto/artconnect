@@ -90,7 +90,9 @@
 						</tr>
 					</tbody>
 				</table>
+				@if (count((array)$carts) > 0)
 				<a href="{{ route('showPaymentForm') }}" class="btn action-1">Checkout</a>
+				@endif
 			</div>
 		</div>
 	</div>

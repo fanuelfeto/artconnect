@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 
 use App\CollectionItem;
-use App\Tempuser;
+use App\Order;
+use App\OrderItem;
 
 class CartController extends Controller
 {
@@ -95,19 +96,39 @@ class CartController extends Controller
 	public function createPaymentForm(Request $request)
 	{
 		$request->validate([
- 				'name' => 'required',
- 				'email' => 'required|email',
- 				'phone_number' => 'required|integer',
- 				'address' => 'required',	
- 			]);
+			'name' => 'required',
+			'email' => 'required|email',
+			'phone_number' => 'required',
+			'address' => 'required',
+		]);
 
-		$temp_user = Tempuser::create([
+		$total = 0;
+
+		$order = Order::create([
 			'name' => $request->name,
 			'email' => $request->email,
 			'phone_number' => $request->phone_number,
 			'address' => $request->address,
+			'status' => 'A'
 		]);
 
-		return view('user.cart');
+		$carts = json_decode(Cookie::get('dw-carts'), true);
+		foreach ($carts as $item)
+		{
+			$total += $item['product_price'];
+			OrderItem::create([
+				'order_id' => $order->id,
+				'product_id' => $item['product_id'],
+				'price' => $item['product_price'],
+				'quantity' => $item['qty']
+			]);
+		}
+
+		Cookie::queue(Cookie::forget('dw-carts'));
+
+		$order->total = $total;
+		$order->save();
+
+		return redirect()->route('payment.showUploadPaymentForm', ['order_id' => $order->id]);
 	}
 }
