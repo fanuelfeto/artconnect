@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Providers\RouteServiceProvider;
 
-use App\HighlightItem;
-use App\CollectionItem;
+use App\Product;
+use App\ProductCategory;
 
 class UserPageController extends Controller
 {
@@ -18,16 +18,16 @@ class UserPageController extends Controller
 
     public function showHomeAccessoriesCatalogue()
     {
-        $collection_items = CollectionItem::where('collection_id',1)->get();    
+        $products = Product::where('product_category_id',1)->get();    
 
-        return view('user.catalogue_homeAccessories',compact('collection_items'));
+        return view('user.catalogue_homeAccessories',compact('products'));
     }
 
     public function homeAccessoriesCatalogueDetails($id)
     {
-        $collection_item = CollectionItem::find($id);
+        $product = Product::find($id);
 
-        return view('user.catalogueDetails_homeAccessories',compact('collection_item'));
+        return view('user.catalogueDetails_homeAccessories',compact('product'));
     }
 
     public function showHighlightsCatalogue()

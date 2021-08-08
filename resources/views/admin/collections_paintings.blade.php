@@ -29,21 +29,21 @@
           <th width="1%">Action</th>
         </tr>
       </thead>
-      @foreach( $collection_items as $collection_item )
+      @foreach( $products as $product )
       <tbody>
         <tr>
-          <td>{{ $collection_item->name }}</td>
-          <td>{{ $collection_item->description }}</td>
-          <td>{{ $collection_item->size }}</td>
-          <td>{{ $collection_item->price }}</td>
+          <td>{{ $product->name }}</td>
+          <td>{{ $product->description }}</td>
+          <td>{{ $product->size }}</td>
+          <td>{{ $product->price }}</td>
           <td>
-            <img width="100" src="{{ asset('images/collections/paintings/'.$collection_item->picture1) }}"><br>
-            <img width="100" src="{{ asset('images/collections/paintings/'.$collection_item->picture2) }}"><br>
-            <img width="100" src="{{ asset('images/collections/paintings/'.$collection_item->picture3) }}"><br>
+            @foreach( $product->productGallery()->get() as $product_gallery )
+            <img width="100" src="{{ asset('images/collections/paintings/'.$product_gallery->picture) }}"><br>
+            @endforeach
           </td>
           <td>
-            <a class="btn btn-success" href="{{ route('admin.showPaintingsEditForm',['id' => $collection_item->id]) }}">Edit</a>
-            <a href="{{ route('admin.deletePaintings',['id' =>$collection_item->id]) }}" onclick="return confirm('Are you sure want to delete this collection?')"><button class="btn btn-danger">Delete</button></a>
+            <a class="btn btn-success" href="{{ route('admin.showPaintingsEditForm',['id' => $product->id]) }}">Edit</a>
+            <a href="{{ route('admin.deletePaintings',['id' =>$product->id]) }}" onclick="return confirm('Are you sure want to delete this collection?')"><button class="btn btn-danger">Delete</button></a>
           </td>
         </tr>
       </tbody>

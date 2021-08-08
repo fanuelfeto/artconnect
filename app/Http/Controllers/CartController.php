@@ -21,15 +21,17 @@ class CartController extends Controller
 
 		$carts = json_decode($request->cookie('dw-carts'), true); 
 
-		$product = CollectionItem::find($request->product_id);
+		$product = Product::find($request->product_id);
+
+		$product_gallery = $product->productGallery()->first();
 
 		$carts[$request->product_id] = [
 			'qty' => 1,
 			'product_id' => $product->id,
 			'product_name' => $product->name,
 			'product_price' => $product->price,
-			'product_image' => $product->picture1,
-			'collection_id' => $product->collection_id
+			'product_image' => $product_gallery->picture,
+			'product_category_id' => $product->product_category_id,
 		];
 
 		$cookie = cookie('dw-carts', json_encode($carts), 60);
@@ -47,20 +49,6 @@ class CartController extends Controller
 		});
 
 		return view('user.cart', compact('carts', 'subtotal'));
-	}
-
-	public function updateCart(Request $request)
-	{
-		$carts = json_decode(request()->cookie('dw-carts'), true);
-		foreach($request->product_id as $key => $row) {
-			if($request->qty[$key] == 0) {
-				unset($carts[$row]);
-			} else {
-				$carts[$row]['qty'] = $request->qty[$key];
-			}
-		}
-		$cookie = cookie('dw-carts', json_encode($carts), 60);
-		return redirect()->back()->cookie($cookie);
 	}
 
 	public function deleteCart(Request $request)

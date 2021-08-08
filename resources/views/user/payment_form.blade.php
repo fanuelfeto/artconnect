@@ -6,7 +6,7 @@
 		<div class="row justify-content-center">
 			<div class="col-xl-10">
 				<h2 class="mb-55 small text-center" data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">Identity Form</h2><br>
-				<h5>Please fill this form before process the payment</h5>
+				<h5>We need your detail</h5>
 				<form action="{{ route('createPaymentForm') }}" method="post">
 					@csrf
 					<div class="mb-30 px-65 pt-45 pb-45 radius10 js-form-block" data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">

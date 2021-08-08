@@ -11,8 +11,6 @@ Route::get('dashboard','UserPageController@dashboard')->name('dashboard');
 Route::get('login','UserAuthController@showLoginForm')->name('login');
 
 
-Route::get('highlights_catalogue','UserPageController@showHighlightCatalogue')->name('showHighlightCatalogue');
-
 Route::get('home_accessories_catalogue','UserPageController@showHomeAccessoriesCatalogue')->name('showHomeAccessoriesCatalogue');
 Route::get('home_accessories_catalogue/details/{id}','UserPageController@homeAccessoriesCatalogueDetails')->name('homeAccessoriesCatalogueDetails');
 
