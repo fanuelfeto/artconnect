@@ -131,4 +131,54 @@ class AdminProductController extends Controller
 		echo "Product successfully deleted!";
 	}
 
+	public function showGallery($id)
+	{
+		$product = Product::find($id);
+		return view('admin.product.gallery', compact('product'));
+	}
+
+	public function createGallery(Request $request)
+	{
+		$request->validate([
+			'product_id' => 'required|integer',
+			'picture' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
+		]);
+
+		$picture_path = public_path('/images/products');
+		$picture_name = "";
+
+		if ($request->file('picture'))
+		{
+			$product_gallery = ProductGallery::create([
+				'product_id' => $request->product_id,
+				'picture' => "",
+			]);
+
+			$picture = $request->file('picture');
+			$picture_name = $request->product_id . "_" . $product_gallery->id . '_product.' . $picture->getClientOriginalExtension();
+			$picture->move($picture_path, $picture_name);
+
+			$product_gallery->picture = $picture_name;
+			$product_gallery->save();
+		}
+
+		return redirect()->route('admin.product.showGallery', ['id' => $request->product_id])->with('success', "Gallery successfully added to product!");
+	}
+
+	public function deleteGallery(Request $request)
+	{
+		$request->validate([
+			'id' => 'required|integer'
+		]);
+
+		$product_gallery = ProductGallery::find($request->id);
+
+		$picture_path = public_path('/images/products');
+		$picture = $picture_path . '/' . $product_gallery->picture;
+		File::delete($picture);
+
+		$product_gallery->delete();
+
+		echo "Gallery successfully deleted!";
+	}
 }

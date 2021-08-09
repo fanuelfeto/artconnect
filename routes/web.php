@@ -51,6 +51,10 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
 		Route::get('edit/{id}','AdminProductController@showEditForm')->name('showEditForm');
 		Route::post('update','AdminProductController@update')->name('update');
 		Route::post('delete','AdminProductController@delete')->name('delete');
+
+		Route::get('gallery/{id}','AdminProductController@showGallery')->name('showGallery');
+		Route::post('gallery/create','AdminProductController@createGallery')->name('createGallery');
+		Route::post('gallery/delete','AdminProductController@deleteGallery')->name('deleteGallery');
 	});
 
 	/* Auth Section | Login | Logout | Register */

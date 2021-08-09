@@ -17,7 +17,9 @@
 		<a href="{{ route('admin.product.create') }}" class="btn btn-success mb-3">Add New Item</a>
 
 		<div class="card">
-			<div class="card-header"><i class="fa fa-align-justify"></i>Item Details</div>
+			<div class="card-header">
+				<h4>Products</h4>
+			</div>
 			<div class="card-body">
 				<div class="table-responsive">
 					<table class="table table-hover">
@@ -32,19 +34,22 @@
 							</tr>
 						</thead>
 						<tbody>
-							@forelse( $products as $product )
+							@forelse ($products as $product)
 							<tr>
 								<td>{{ $product->name }}</td>
 								<td>{{ $product->description }}</td>
 								<td>{{ $product->size }}</td>
 								<td>{{ $product->price }}</td>
 								<td>
-									@foreach( $product->productGallery()->get() as $product_gallery )
-									<img width="50" src="{{ asset('images/products/'.$product_gallery->picture) }}" class="img-fluid rounded" style="margin: 2px;"><br>
-									@endforeach
+									@forelse( $product->productGallery()->get() as $product_gallery )
+									<img width="50" src="{{ asset('images/products/'.$product_gallery->picture) }}" class="img-fluid rounded" style="margin: 1px;">
+									@empty
+									No picture
+									@endforelse
 								</td>
 								<td>
-									<a class="btn btn-success" href="{{ route('admin.product.showEditForm', ['id' => $product->id]) }}">Edit</a>
+									<a href="{{ route('admin.product.showGallery', ['id' => $product->id]) }}" class="btn btn-info">See Gallery</a>
+									<a href="{{ route('admin.product.showEditForm', ['id' => $product->id]) }}" class="btn btn-success">Edit</a>
 									<button data-id="{{ $product->id }}" class="btn btn-danger delete">Delete</button>
 								</td>
 							</tr>
