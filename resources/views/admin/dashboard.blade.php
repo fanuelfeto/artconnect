@@ -2,9 +2,12 @@
 @section('title','Dashboard')
 
 @section('content')
- <div class="c-body">
-      <main class="c-main">
-        Main Page
-      </main>
-    </div>
+<div class="container-fluid">
+	<div class="fade-in">
+		<div class="alert alert-info">
+			<strong>Under Development!</strong>
+			Dashboard is under development. We will bring more updates in the future. Stay tune!
+		</div>
+	</div>
+</div>
 @endsection
