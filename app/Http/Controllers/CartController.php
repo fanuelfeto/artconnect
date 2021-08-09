@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 
-use App\CollectionItem;
+use App\Product;
 use App\Order;
 use App\OrderItem;
 
@@ -41,7 +41,6 @@ class CartController extends Controller
 
 	public function listCart()
 	{
-
 		$carts = json_decode(request()->cookie('dw-carts'), true);
 
 		$subtotal = collect($carts)->sum(function($q) {

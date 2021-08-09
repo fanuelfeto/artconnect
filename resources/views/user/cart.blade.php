@@ -35,19 +35,19 @@
 							<tr>
 								<td>
 									<div class="media">
-										@if ($row['collection_id'] == 1)
+										@if ($row['product_id'] == 1)
 										<div class="d-flex">
 											<img src="{{ asset('images/collections/home_accessories/' . $row['product_image']) }}" width="100px" height="100px" alt="{{ $row['product_name'] }}">
 										</div>
-										@elseif ($row['collection_id'] == 2)
+										@elseif ($row['product_id'] == 2)
 										<div class="d-flex">
 											<img src="{{ asset('images/collections/furniture/' . $row['product_image']) }}" width="100px" height="100px" alt="{{ $row['product_name'] }}">
 										</div>
-										@elseif ($row['collection_id'] == 3)
+										@elseif ($row['product_id'] == 3)
 										<div class="d-flex">
 											<img src="{{ asset('images/collections/paintings/' . $row['product_image']) }}" width="100px" height="100px" alt="{{ $row['product_name'] }}">
 										</div>
-										@elseif ($row['collection_id'] == 4)
+										@elseif ($row['product_id'] == 4)
 										<div class="d-flex">
 											<img src="{{ asset('images/collections/sculpture/' . $row['product_image']) }}" width="100px" height="100px" alt="{{ $row['product_name'] }}">
 										</div>
