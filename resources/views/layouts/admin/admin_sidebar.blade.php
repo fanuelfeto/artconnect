@@ -1,4 +1,4 @@
-<div class="c-sidebar-brand d-lg-down-none">
+<div class="c-sidebar-brand d-lg-down">
 	<img src="{{ asset('images/main-logo.jpeg') }}" class="c-sidebar-brand-full" width="118" height="46" />
 	<img src="{{ asset('images/main-logo.jpeg') }}" class="c-sidebar-brand-minimized" width="46" height="46" />
 </div>
@@ -37,27 +37,24 @@
 	<li class="c-sidebar-nav-item">
 		<a class="c-sidebar-nav-link {{ Request::segment(3) === 'paintings' ? 'c-active' : null }}" href="{{ route('admin.product.showPaintings') }}">
 			<i class="c-sidebar-nav-icon cil-filter-photo"></i>
-			Paintings
+		Paintings
 		</a>
 	</li>
 
 	<li class="c-sidebar-nav-item">
-		<a class="c-sidebar-nav-link {{ Request::segment(3) === 'scultures' ? 'c-active' : null }}" href="{{ route('admin.product.showSculptures') }}">
+		<a class="c-sidebar-nav-link {{ Request::segment(3) === 'sculptures' ? 'c-active' : null }}" href="{{ route('admin.product.showSculptures') }}">
 			<i class="c-sidebar-nav-icon cil-user-female"></i>
-			Scultures
+			Sculptures
 		</a>
 	</li>
 
-	<!-- <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
-		<a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
-			<i class="c-sidebar-nav-icon cil-list"></i>
-			Dropdown Menu
+	<li class="c-sidebar-nav-item">
+		<a class="c-sidebar-nav-link {{ Request::segment(4) === 'orders' ? 'c-active' : null }}" href="{{ route('admin.product.showOrders') }}">
+			<i class="c-sidebar-nav-icon"></i>
+			Orders
 		</a>
-		<ul class="c-sidebar-nav-dropdown-items">
-			<li class="c-sidebar-nav-item">
-				<a class="c-sidebar-nav-link" href="#"><span class="c-sidebar-nav-icon"></span> Dropdown Item</a>
-			</li>
-		</ul>
-	</li> -->
+	</li>
+
+
 </ul>
 <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent" data-class="c-sidebar-minimized"></button>

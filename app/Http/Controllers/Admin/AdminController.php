@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 
+use App\Order;
+
 class AdminController extends Controller
 {
 	public function __construct()
@@ -17,6 +19,8 @@ class AdminController extends Controller
 
 	public function dashboard()
 	{
+
 		return view('admin.dashboard');
+		
 	}
 }

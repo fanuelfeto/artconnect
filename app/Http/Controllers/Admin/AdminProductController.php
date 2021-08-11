@@ -12,6 +12,7 @@ use App\Providers\RouteServiceProvider;
 use App\Product;
 use App\ProductGallery;
 use App\ProductCategory;
+use App\Order;
 
 class AdminProductController extends Controller
 {
@@ -48,6 +49,12 @@ class AdminProductController extends Controller
 	{
 		$products = Product::where('product_category_id', 4)->get();
 		return view('admin.product.index', compact('products'));
+	}
+
+	public function showOrders()
+	{
+		$orders = Order::all();
+		return view('admin.product.orders',compact('orders'));
 	}
 
 	public function showCreateForm()

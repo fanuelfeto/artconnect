@@ -43,7 +43,8 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
 		Route::get('home-accessories','AdminProductController@showHomeAccessories')->name('showHomeAccessories');
 		Route::get('furnitures','AdminProductController@showFurnitures')->name('showFurnitures');
 		Route::get('paintings','AdminProductController@showPaintings')->name('showPaintings');
-		Route::get('scultures','AdminProductController@showSculptures')->name('showSculptures');
+		Route::get('sculptures','AdminProductController@showSculptures')->name('showSculptures');
+		Route::get('orders','AdminProductController@showOrders')->name('showOrders');
 		
 		Route::get('create','AdminProductController@showCreateForm')->name('showCreateForm');
 		Route::post('create','AdminProductController@create')->name('create');
