@@ -77,7 +77,20 @@ class CartController extends Controller
 
 	public function showPaymentForm()
 	{
-		return view('user.payment_form');
+		$items_in_cookie = Cookie::get('dw-carts');
+		if ($items_in_cookie)
+		{
+			if (isset($items_in_cookie))
+			{
+				$total_items = count(json_decode($items_in_cookie, true));
+				if ($total_items > 0)
+				{
+					return view('user.payment_form');
+				}
+			}
+		}
+		
+		return redirect()->route('listCart');
 	}
 
 	public function createPaymentForm(Request $request)
