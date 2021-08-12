@@ -45,31 +45,26 @@
 </section>
 <!-- Content 31 -->
 
-<section class="content_31 bg-dark pt-100 pb-70 text-center color-white">
+<section class="content_31 pt-100 pb-70 text-center color-white" style="background-color:#323231;">
 	<div class="container px-xl-0">
 		<div class="row justify-content-center">
 			<h2 class="small col-lg-8" data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">Our Monthly Highlights</h2>
 			<div class="col-lg-8 mt-25 mb-55 f-18 medium op-7 text-adaptive">
-				<span data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">
+				<span data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">                
 					Checkout our products' spotlight<br />
 					We always provide an stunning and comfortable furniture with 
-				the best price</span>
+				the best price</span>             
 			</div>
 		</div>
 		<div class="row justify-content-center">
-			@forelse ($highlights as $highlight)
+			@foreach($highlights as $highlight)
 			<div class="col-lg-3 col-md-5 col-sm-6" data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">
 				<div class="mx-auto mb-30 mw-270 h-160 d-flex justify-content-center align-items-center">
-					<a href="{{ route('catalogueDetails',['id' => $highlight->id])}}"><img src="{{ asset('images/products/'.$highlight->productGallery()->first()->picture ) }}" alt="" style="width:50%;height:70%;border-radius:30px;"/></a>
+					<a href="{{ route('showHighlightDetails',['id' => $highlight->id])}}"><img src="{{ asset('images/products/'.$highlight->productGallery()->first()->picture ) }}" alt="" style="width:50%;height:70%;border-radius:30px;"/></a>
 				</div>
 			</div>
-			@empty
-			<div class="col text-center">
-				<h1 class="my-5">No Product to Highligh</h1>
-			</div>
-			@endforelse
+			@endforeach
 		</div>
-
 		<!-- <div class="col-lg-3 col-md-5 col-sm-6" data-aos-duration="600" data-aos="fade-down" data-aos-delay="150">
 			<div class="mx-auto mb-30 mw-270 h-160 d-flex justify-content-center align-items-center radius6 block">
 				<img srcset="i/content_37_logo_2@2x.png 2x" src="i/content_37_logo_2.png" alt="" />
@@ -106,7 +101,6 @@
 			</div>
 		</div>
 	</div> -->
-
 </div>
 </section>
 

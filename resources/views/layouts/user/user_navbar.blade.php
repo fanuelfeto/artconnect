@@ -14,7 +14,7 @@
 				<a href="{{ route('showPaintingsCatalogue') }}" class="link color-white mx-15">Paintings</a>
 				<a href="{{ route('showSculpturesCatalogue') }}" class="link color-white mx-15">Sculpture</a>
 				<a href="{{ route('payment.index') }}" class="link color-white mx-15">Upload Payment</a>
-				<a href="{{ route('listCart') }}" class="btn btn-outline-light" >
+				<a href="{{ route('listCart') }}" class="link color-white mx-15" >
 					Cart
 					@inject('count', 'App\Services\CountingService')
 					<span class="badge text-black ms-1 rounded-pill">{{ $count->itemsInCart() }}</span>
