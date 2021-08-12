@@ -14,6 +14,15 @@ Route::get('login','UserAuthController@showLoginForm')->name('login');
 Route::get('home_accessories_catalogue','UserPageController@showHomeAccessoriesCatalogue')->name('showHomeAccessoriesCatalogue');
 Route::get('home_accessories_catalogue/details/{id}','UserPageController@homeAccessoriesCatalogueDetails')->name('homeAccessoriesCatalogueDetails');
 
+Route::get('furnitures_catalogue','UserPageController@showFurnituresCatalogue')->name('showFurnituresCatalogue');
+Route::get('furnitures_catalogue/details/{id}','UserPageController@furnituresCatalogueDetails')->name('furnituresCatalogueDetails');
+
+Route::get('paintings_catalogue','UserPageController@showPaintingsCatalogue')->name('showPaintingsCatalogue');
+Route::get('paintings_catalogue/details/{id}','UserPageController@paintingsCatalogueDetails')->name('paintingsCatalogueDetails');
+
+Route::get('sculptures_catalogue','UserPageController@showSculpturesCatalogue')->name('showSculpturesCatalogue');
+Route::get('sculptures_catalogue/details/{id}','UserPageController@sculpturesCatalogueDetails')->name('sculpturesCatalogueDetails');
+
 Route::get('highlights_catalogue','UserPageController@showHighlightsCatalogue')->name('showHighlightsCatalogue');
 
 Route::post('cart','CartController@addtoCart')->name('addtoCart');

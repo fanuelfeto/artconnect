@@ -18,10 +18,10 @@
             </div>
             <div class="col-md-1"></div>
             <div class="col-lg-5 col-md-4" data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">
-                <img srcset="i/feature_44_img_1@2x.png 2x" src="i/feature_44_img_1.png" class="img" alt="" />           
+                 <img class="card-img-top" height="250" src="{{ asset('images/products/'.$home_accessories->productGallery()->first()->picture) }}" class="img-fluid img" alt="..." />         
             </div>
         </div>
-        <div class="mt-75 row justify-content-center justify-content-md-between align-items-end align-items-lg-start flex-row-reverse row2">
+        <div class="mt-75 row justify-content-center justify-content-md-between align-items-end align-items-lg-start flex-row-reverse row2 mb-50">
             <div class="col-xl-1"></div>
             <div class="col-lg-5 col-md-6 pb-60 pb-lg-0 inner2" data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">
                 <h2 class="mt-55 mb-30 small">Add cozy Furniture <br />to your room</h2>
@@ -33,7 +33,7 @@
             </div>
             <div class="col-md-1"></div>
             <div class="col-xl-4 col-lg-5 col-md-5 col-sm-6 col-8" data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">
-                <img srcset="i/feature_44_img_2@2x.png 2x" src="i/feature_44_img_2.png" class="img-fluid img" alt="" />         
+                <img src="{{ asset('images/products/'.$furnitures->productGallery()->first()->picture) }}" class="img-fluid img" alt="" />         
             </div>
             <div class="col-xl-1"></div>
         </div>
@@ -53,12 +53,15 @@
             </div>
         </div>
         <div class="row justify-content-center">
-                        <div class="col-lg-3 col-md-5 col-sm-6" data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">
+            @foreach($highlights as $highlight)
+            <div class="col-lg-3 col-md-5 col-sm-6" data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">
                 <div class="mx-auto mb-30 mw-270 h-160 d-flex justify-content-center align-items-center radius6 block">
-                    <img srcset="i/content_37_logo_1@2x.png 2x" src="i/content_37_logo_1.png" alt="" />
+                    <img src="{{ asset('images/products/'.$highlight->productGallery()->first()->picture ) }}" alt="" />
                 </div>
             </div>
-                        <div class="col-lg-3 col-md-5 col-sm-6" data-aos-duration="600" data-aos="fade-down" data-aos-delay="150">
+            @endforeach
+        </div>
+            <!--             <div class="col-lg-3 col-md-5 col-sm-6" data-aos-duration="600" data-aos="fade-down" data-aos-delay="150">
                 <div class="mx-auto mb-30 mw-270 h-160 d-flex justify-content-center align-items-center radius6 block">
                     <img srcset="i/content_37_logo_2@2x.png 2x" src="i/content_37_logo_2.png" alt="" />
                 </div>
@@ -93,7 +96,7 @@
                     <img srcset="i/content_37_logo_8@2x.png 2x" src="i/content_37_logo_8.png" alt="" />
                 </div>
             </div>
-                    </div>
+                    </div> -->
     </div>
 </section>
 
@@ -104,33 +107,25 @@
         <div class="row justify-content-center">
             <div class="col-xl-8 col-lg-10 text-center" data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">
                 <h6 class="f-22 regular">
-                    Samples will show you the feeling on how to play around using the 
-                    components in the website building process.
+                    See various Paintings from many cities in Indonesia
                 </h6>
             </div>
             <div class="col-xl-11 text-center" data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">
-                <img srcset="i/feature_13_img@2x.png 2x" src="i/feature_13_img.png" class="mt-55 mb-40 mb-md-0 img-fluid bg" alt="" />
+                <img src="{{ asset('images/products/'.$paintings->productGallery()->first()->picture ) }}" class="mt-55 mb-40 mb-md-0 img-fluid bg" alt="" />
             </div>
         </div>
         <div class="row text-center text-md-left">
             <div class="col-xl-1"></div>
             <div class="col-xl-5 col-md-6 mb-40" data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">
-                <div class="mb-20 f-18 medium title">How Startup Framework works?</div>
+                <div class="mb-20 f-18 medium title">Put the Content Details here</div>
                 <div class="color-heading text-adaptive">
-                    The Generator App is an online tool that helps you to 
-                    export ready-made templates ready to work as your 
-                    future website. It helps you to combine slides, panels and 
-                    other components and export it as a set of static files: 
-                    HTML/CSS/JS.
+                    Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.
                 </div>
             </div>
             <div class="col-xl-5 col-md-6 mb-40" data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">
-                <div class="mb-20 f-18 medium title">Do you provide hosting with Startup?</div>
+                <div class="mb-20 f-18 medium title">Put the Content Details here</div>
                 <div class="color-heading text-adaptive">
-                    No, hosting is on you. You upload the result on your <br />
-                    hosting via FTP or using other tools you like. You can use 
-                    any server, just make sure it have a PHP installed in case if 
-                    you need a contact form.
+                    Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.
                 </div>
             </div>
             <div class="col-xl-1"></div>
@@ -143,16 +138,12 @@
     <div class="container px-xl-0">
         <div class="row justify-content-center">
             <div class="col-xl-9 col-lg-10">
-                <img srcset="i/call_to_action_7_img@2x.jpg 2x" src="i/call_to_action_7_img.jpg" alt="" class="img-fluid radius30"  data-aos-duration="600" data-aos="fade-down" data-aos-delay="0"/>
-                <h2 class="mt-30 mb-20 small" data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">Startup 3</h2>
+                <img src="{{ asset('images/products/'.$sculptures->productGallery()->first()->picture ) }}" alt="" class="img-fluid radius30"  data-aos-duration="600" data-aos="fade-down" data-aos-delay="0"/>
+                <h2 class="mt-30 mb-20 small" data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">Sculptures</h2>
             </div>
             <div class="col-xl-4 col-lg-6 col-md-8 col-sm-10">
                 <div class="color-heading text-adaptive" data-aos-duration="600" data-aos="fade-down" data-aos-delay="600">
-                    A high-quality solution for those who want a 
-                    beautiful startup website quickly.              </div>
-                <div data-aos-duration="600" data-aos="fade-down" data-aos-delay="900">             
-                <a href="#" class="mt-45 btn lg action-1">Download on App Store</a>
-                </div>              
+                    Put the Content Details Here</div>      
             </div>
         </div>
     </div>

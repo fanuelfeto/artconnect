@@ -1,5 +1,5 @@
 @extends('layouts.user.user')
-@section('title','Home Accesories Catalogue')
+@section('title','Paintings Catalogue')
 
 @section('content')
 <!DOCTYPE html>
@@ -20,7 +20,7 @@
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Home Accessories Catalogue</h1>
+                    <h1 class="display-4 fw-bolder">Paintings Catalogue</h1>
                     <p class="lead fw-normal text-white-50 mb-0">Pick your favorite with good price</p>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                                 </div>
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a href="{{ route('homeAccessoriesCatalogueDetails',['id' => $product->id])}}" class="mt-30 btn border-gray color-main">See More</a></div>
+                                <div class="text-center"><a href="{{ route('paintingsCatalogueDetails',['id' => $product->id])}}" class="mt-30 btn border-gray color-main">See More</a></div>
                             </div>
                         </div>
                     </div>
