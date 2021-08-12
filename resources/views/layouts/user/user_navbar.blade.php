@@ -1,6 +1,6 @@
 <!-- Navigation 18 -->
 
-<nav class="navigation_18 bg-dark pt-30 pb-30 lh-40 text-center">
+<nav class="navigation_18 pt-30 pb-30 lh-40 text-center" style="background-color:#323231;">
 	<div class="container px-xl-0">
 		<div class="row justify-content-between align-items-center">
 			<div class="col-lg-auto text-lg-left" data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">

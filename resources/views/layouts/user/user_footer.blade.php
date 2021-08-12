@@ -1,6 +1,6 @@
 <!-- Footer 11 -->
 
-<footer class="footer_11 bg-dark pt-45 pb-45 color-white text-center">
+<footer class="footer_11 pt-45 pb-45 color-white text-center" style="background-color:#323231;">
     <div class="container px-xl-0">
         <div class="row align-items-center">
             <div class="mb-20 mb-lg-0 col-lg-3" data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">
