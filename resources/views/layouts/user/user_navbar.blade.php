@@ -8,7 +8,7 @@
 				<a href="{{ route('dashboard') }}" class="logo link color-white">Artconnect</a>
 			</div>
 			<div class="col-lg-9 text-lg-right" data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">
-				<a href="#" class="link color-white mr-15">Highlights</a>
+				<!-- <a href="#" class="link color-white mr-15">Highlights</a> -->
 				<a href="{{ route('showHomeAccessoriesCatalogue')}}" class="link color-white mx-15">Home Accessories</a>
 				<a href="{{ route('showFurnituresCatalogue') }}" class="link color-white mx-15">Furniture</a>
 				<a href="{{ route('showPaintingsCatalogue') }}" class="link color-white mx-15">Paintings</a>

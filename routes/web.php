@@ -23,7 +23,7 @@ Route::get('paintings_catalogue/details/{id}','UserPageController@paintingsCatal
 Route::get('sculptures_catalogue','UserPageController@showSculpturesCatalogue')->name('showSculpturesCatalogue');
 Route::get('sculptures_catalogue/details/{id}','UserPageController@sculpturesCatalogueDetails')->name('sculpturesCatalogueDetails');
 
-Route::get('highlights_catalogue','UserPageController@showHighlightsCatalogue')->name('showHighlightsCatalogue');
+Route::get('highlight_details/{id}','UserPageController@showHighlightDetails')->name('showHighlightDetails');
 
 Route::post('cart','CartController@addtoCart')->name('addtoCart');
 Route::get('cart','CartController@listCart')->name('listCart');

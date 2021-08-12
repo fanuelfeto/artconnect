@@ -82,10 +82,10 @@ class UserPageController extends Controller
         return view('user.catalogueDetails_sculptures',compact('product'));
     }
 
-    public function showHighlightsCatalogue()
+    public function showHighlightDetails($id)
     {
-        $highlights = Product::where('status','A')->latest()->take(3)->orderBy('created_at','desc')->get();
+        $product = Product::find($id);
 
-        return view('user.catalogue_highlights',compact('highlights'));
+        return view('user.catalogue_highlights',compact('product'));
     }
 }

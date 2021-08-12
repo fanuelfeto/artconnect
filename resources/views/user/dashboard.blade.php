@@ -29,7 +29,7 @@
                     Nothing as comfort as having cozy couches,
                     beds, and eye-catching decorations in your house
                 </div>
-                <a href="#" class="mt-30 btn border-gray color-main">See More</a>
+                <a href="{{ route('showFurnituresCatalogue') }}" class="mt-30 btn border-gray color-main">See More</a>
             </div>
             <div class="col-md-1"></div>
             <div class="col-xl-4 col-lg-5 col-md-5 col-sm-6 col-8" data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">
@@ -55,8 +55,8 @@
         <div class="row justify-content-center">
             @foreach($highlights as $highlight)
             <div class="col-lg-3 col-md-5 col-sm-6" data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">
-                <div class="mx-auto mb-30 mw-270 h-160 d-flex justify-content-center align-items-center radius6 block">
-                    <img src="{{ asset('images/products/'.$highlight->productGallery()->first()->picture ) }}" alt="" />
+                <div class="mx-auto mb-30 mw-270 h-160 d-flex justify-content-center align-items-center">
+                    <a href="{{ route('showHighlightDetails',['id' => $highlight->id])}}"><img src="{{ asset('images/products/'.$highlight->productGallery()->first()->picture ) }}" alt="" style="width:50%;height:70%;border-radius:30px;"/></a>
                 </div>
             </div>
             @endforeach
@@ -111,7 +111,7 @@
                 </h6>
             </div>
             <div class="col-xl-11 text-center" data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">
-                <img src="{{ asset('images/products/'.$paintings->productGallery()->first()->picture ) }}" class="mt-55 mb-40 mb-md-0 img-fluid bg" alt="" />
+                <img src="{{ asset('images/products/'.$paintings->productGallery()->first()->picture ) }}" class="mt-55 mb-40 mb-md-0 img-fluid bg" style="width:50%;height:70%;border-radius:30px;" alt="" />
             </div>
         </div>
         <div class="row text-center text-md-left">
@@ -138,7 +138,7 @@
     <div class="container px-xl-0">
         <div class="row justify-content-center">
             <div class="col-xl-9 col-lg-10">
-                <img src="{{ asset('images/products/'.$sculptures->productGallery()->first()->picture ) }}" alt="" class="img-fluid radius30"  data-aos-duration="600" data-aos="fade-down" data-aos-delay="0"/>
+                <img src="{{ asset('images/products/'.$sculptures->productGallery()->first()->picture ) }}" alt="" class="img-fluid radius30"  data-aos-duration="600" data-aos="fade-down" data-aos-delay="0" style="width:50%;height:70%;border-radius:30px;"/>
                 <h2 class="mt-30 mb-20 small" data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">Sculptures</h2>
             </div>
             <div class="col-xl-4 col-lg-6 col-md-8 col-sm-10">
