@@ -41,7 +41,7 @@
 </section>
 <!-- Content 31 -->
 
-<section class="content_31 bg-dark pt-100 pb-70 text-center color-white">
+<section class="content_31 pt-100 pb-70 text-center color-white" style="background-color:#323231;>
     <div class="container px-xl-0">
         <div class="row justify-content-center">
             <h2 class="small col-lg-8" data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">Our Monthly Highlights</h2>
