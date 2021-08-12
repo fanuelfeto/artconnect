@@ -35,8 +35,8 @@
 			<div class="card-body">
 				<div class="d-flex flex-wrap">
 					@forelse ($product->productGallery()->get() as $product_gallery)
-					<div class="position-relative border m-2">
-						<img src="{{ asset('images/products/'.$product_gallery->picture) }}" width="200">
+					<div class="position-relative m-2">
+						<img src="{{ asset('images/products/'.$product_gallery->picture) }}" class="img-fluid" width="200">
 						<button data-id="{{ $product_gallery->id }}" class="position-absolute close border rounded-circle bg-dark delete" style="top: 4px; right: 4px; width: 1.5rem; height: 1.5rem;"><strong>&times;</strong></button>
 					</div>
 					@empty

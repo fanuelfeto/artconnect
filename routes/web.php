@@ -11,22 +11,15 @@ Route::get('dashboard','UserPageController@dashboard')->name('dashboard');
 Route::get('login','UserAuthController@showLoginForm')->name('login');
 
 
-Route::get('home_accessories_catalogue','UserPageController@showHomeAccessoriesCatalogue')->name('showHomeAccessoriesCatalogue');
-Route::get('home_accessories_catalogue/details/{id}','UserPageController@homeAccessoriesCatalogueDetails')->name('homeAccessoriesCatalogueDetails');
+Route::get('catalogue/home-accessories','UserPageController@showHomeAccessoriesCatalogue')->name('showHomeAccessoriesCatalogue');
+Route::get('catalogue/furnitures','UserPageController@showFurnituresCatalogue')->name('showFurnituresCatalogue');
+Route::get('catalogue/paintings','UserPageController@showPaintingsCatalogue')->name('showPaintingsCatalogue');
+Route::get('catalogue/sculptures','UserPageController@showSculpturesCatalogue')->name('showSculpturesCatalogue');
 
-Route::get('furnitures_catalogue','UserPageController@showFurnituresCatalogue')->name('showFurnituresCatalogue');
-Route::get('furnitures_catalogue/details/{id}','UserPageController@furnituresCatalogueDetails')->name('furnituresCatalogueDetails');
+Route::get('catalogue/details/{id}','UserPageController@catalogueDetails')->name('catalogueDetails');
 
-Route::get('paintings_catalogue','UserPageController@showPaintingsCatalogue')->name('showPaintingsCatalogue');
-Route::get('paintings_catalogue/details/{id}','UserPageController@paintingsCatalogueDetails')->name('paintingsCatalogueDetails');
-
-Route::get('sculptures_catalogue','UserPageController@showSculpturesCatalogue')->name('showSculpturesCatalogue');
-Route::get('sculptures_catalogue/details/{id}','UserPageController@sculpturesCatalogueDetails')->name('sculpturesCatalogueDetails');
-
-Route::get('highlight_details/{id}','UserPageController@showHighlightDetails')->name('showHighlightDetails');
-
-Route::post('cart','CartController@addtoCart')->name('addtoCart');
 Route::get('cart','CartController@listCart')->name('listCart');
+Route::post('cart','CartController@addtoCart')->name('addtoCart');
 Route::post('cart/update','CartController@updateCart')->name('updateCart');
 Route::get('cart/delete','CartController@deleteCart')->name('deleteCart');
 Route::get('cart/payment_form','CartController@showPaymentForm')->name('showPaymentForm');

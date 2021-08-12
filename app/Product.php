@@ -10,6 +10,11 @@ class Product extends Model
 	protected $primaryKey = "id";
 	protected $perPage = 25;
 
+	public $incrementing = true;
+	public $timestamps = true;
+
+	protected $guarded = [];
+
 	public function productCategory()
 	{
 		return $this->belongsTo('App\ProductCategory');

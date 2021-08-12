@@ -29,21 +29,18 @@
 				</form>
 			</div>
 			<div class="col-md-1"></div>
-			<div class="col-xl-4 col-lg-5 col-md-5 col-sm-6 col-8" data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">
-				<div class="wrapper">
-					<nav class="lil-nav">
-						<a href="#picture1">
-							@foreach( $product->productGallery()->get() as $product_gallery )
-							<img src="{{ asset('images/products/'.$product_gallery->picture) }}" class="img-fluid img lil-nav__img" alt="" />
-							@endforeach
-						</a>
-					</nav>
-					<div class="gallery">
-						@foreach( $product->productGallery()->get() as $product_gallery )
-						<img src="{{ asset('images/products/'.$product_gallery->picture) }}" class="img-fluid img gallery__img" id="picture" alt="" />
-						@endforeach
-					</div>
-				</div>      
+			<div class="col-xl-4 col-lg-5 col-md-5 col-sm-6 col-8" data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">	
+				<div>
+					@if ($product->productGallery()->first())
+					<img src="{{ asset('images/products/'.$product->productGallery()->first()->picture) }}" class="img-fluid img gallery__img" id="img-view" alt="" />
+					@endif
+				</div>
+				<div class="d-flex flex-wrap">
+					@foreach( $product->productGallery()->get() as $product_gallery )
+					<img src="{{ asset('images/products/'.$product_gallery->picture) }}" class="img-fluid img-thumbnail m-1 img-target" width="50" style="cursor: pointer;" />
+					@endforeach
+				</div>
+				
 			</div>
 			<div class="col-xl-1"></div>
 		</div>
@@ -69,6 +66,10 @@
 			function () {
 				location.reload();
 			});
+		});
+
+		$(".img-target").on("click", function () {
+			$("#img-view").attr("src", $(this).attr('src'));
 		});
 	});
 

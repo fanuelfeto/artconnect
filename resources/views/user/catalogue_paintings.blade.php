@@ -40,7 +40,7 @@
                                 </div>
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a href="{{ route('paintingsCatalogueDetails',['id' => $product->id])}}" class="mt-30 btn border-gray color-main">See More</a></div>
+                                <div class="text-center"><a href="{{ route('catalogueDetails',['id' => $product->id])}}" class="mt-30 btn border-gray color-main">See More</a></div>
                             </div>
                         </div>
                     </div>
