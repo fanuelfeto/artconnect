@@ -18,7 +18,7 @@
             </div>
             <div class="col-md-1"></div>
             <div class="col-lg-5 col-md-4" data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">
-                 <img class="card-img-top" height="250" src="{{ asset('images/products/'.$home_accessories->productGallery()->first()->picture) }}" class="img-fluid img" alt="..." />         
+                 <img class="card-img-top" height="250" src="{{ asset('images/products/'.$home_accessories->productGallery()->first()->picture) }}" class="img-fluid img" alt="..." style="border-radius: 5px;"/>         
             </div>
         </div>
         <div class="mt-75 row justify-content-center justify-content-md-between align-items-end align-items-lg-start flex-row-reverse row2 mb-50">
@@ -33,7 +33,7 @@
             </div>
             <div class="col-md-1"></div>
             <div class="col-xl-4 col-lg-5 col-md-5 col-sm-6 col-8" data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">
-                <img src="{{ asset('images/products/'.$furnitures->productGallery()->first()->picture) }}" class="img-fluid img" alt="" />         
+                <img src="{{ asset('images/products/'.$furnitures->productGallery()->first()->picture) }}" class="img-fluid img" alt="" style="border-radius: 5px;"/>         
             </div>
             <div class="col-xl-1"></div>
         </div>
