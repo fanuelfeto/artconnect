@@ -24,13 +24,13 @@
 						<input type="hidden" name="product_id" value="{{ $product->id }}" class="form-control">
 					</div>
 					<div class="card_area">
-						<button type="submit" class="mt-30 btn border-gray color-main" id="btn-submit">Add to Cart</button>
+						<button type="submit" class="mt-30 btn border-gray color-main mb-3 mb-lg-0" id="btn-submit">Add to Cart</button>
 					</div>
 				</form>
 			</div>
 			<div class="col-md-1"></div>
 			<div class="col-xl-4 col-lg-5 col-md-5 col-sm-6 col-8" data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">	
-				<div>
+				<div id="img-container">
 					@if ($product->productGallery()->first())
 					<img src="{{ asset('images/products/'.$product->productGallery()->first()->picture) }}" class="img-fluid img gallery__img" id="img-view" alt="" />
 					@endif
@@ -47,7 +47,12 @@
 	</div>
 </section>
 
-<script type="text/javascript">
+@endsection
+
+@section('script')
+<script src="{{ asset('js/jquery.zoom.min.js') }}"></script>
+
+<script>
 
 	$(document).ready(function () {
 
@@ -69,8 +74,12 @@
 		});
 
 		$(".img-target").on("click", function () {
+			$('.zoomImg').remove();
 			$("#img-view").attr("src", $(this).attr('src'));
+			$('#img-container').zoom();
 		});
+
+		$('#img-container').zoom();
 	});
 
 </script>

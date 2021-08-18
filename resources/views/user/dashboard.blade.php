@@ -57,13 +57,17 @@
 			</div>
 		</div>
 		<div class="row justify-content-center">
-			@foreach($highlights as $highlight)
+			@forelse ($highlights as $highlight)
 			<div class="col-lg-3 col-md-5 col-sm-6" data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">
 				<div class="mx-auto mb-30 mw-270 h-160 d-flex justify-content-center align-items-center">
-					<a href="{{ route('showHighlightDetails',['id' => $highlight->id])}}"><img src="{{ asset('images/products/'.$highlight->productGallery()->first()->picture ) }}" alt="" style="width:50%;height:70%;border-radius:30px;"/></a>
+					<a href="{{ route('catalogueDetails',['id' => $highlight->id])}}"><img src="{{ asset('images/products/'.$highlight->productGallery()->first()->picture ) }}" alt="" style="width:50%;height:70%;border-radius:30px;"/></a>
 				</div>
 			</div>
-			@endforeach
+			@empty
+			<div class="col text-center">
+				<h1 class="my-5">No Product to Highlight</h1>
+			</div>
+			@endforelse
 		</div>
 		<!-- <div class="col-lg-3 col-md-5 col-sm-6" data-aos-duration="600" data-aos="fade-down" data-aos-delay="150">
 			<div class="mx-auto mb-30 mw-270 h-160 d-flex justify-content-center align-items-center radius6 block">
