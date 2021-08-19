@@ -27,8 +27,9 @@
 							<tr>
 								<th>Name</th>
 								<th>Description</th>
-								<th>Size</th>
-								<th>Price</th>
+								<th>Width (cm)</th>
+								<th>Height (cm)</th>
+								<th>Price (IDR)</th>
 								<th>Pictures</th>
 								<th>Actions</th>
 							</tr>
@@ -38,8 +39,9 @@
 							<tr>
 								<td>{{ $product->name }}</td>
 								<td>{{ $product->description }}</td>
-								<td>{{ $product->size }}</td>
-								<td>{{ $product->price }}</td>
+								<td>{{ $product->width }}</td>
+								<td>{{ $product->height }}</td>
+								<td>{{ number_format($product->price, 0, '.', ',') }}</td>
 								<td>
 									@forelse( $product->productGallery()->get() as $product_gallery )
 									<img width="50" src="{{ asset('images/products/'.$product_gallery->picture) }}" class="img-fluid rounded" style="margin: 1px;">
