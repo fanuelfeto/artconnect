@@ -21,7 +21,7 @@
 	<link href="{{ asset('css/style.css') }}" rel="stylesheet" />
 	<!-- jQuery 3.3.1 -->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-
+  
 </head> 
 <body>
 	@include('layouts.user.user_navbar')

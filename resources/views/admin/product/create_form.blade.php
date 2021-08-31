@@ -35,8 +35,12 @@
 				<textarea class="form-control" id="description" name="description" rows="3" placeholder="Type the details of your item here" required>{{ old('description') }}</textarea>
 			</div>
 			<div class="form-group">
-				<label for="size">Size <span class="font-weight-bold text-danger">*</span></label>
-				<input type="number" class="form-control" id="size" name="size" placeholder="Type the size of the product" min="0" value="{{ old('size') }}" required />
+				<label for="width">Width (cm)<span class="font-weight-bold text-danger">*</span></label>
+				<input type="number" class="form-control" id="width" name="width" placeholder="Type the width of the product" min="0" value="{{ old('width') }}" required />
+			</div>
+			<div class="form-group">
+			<label for="height">Height (cm)<span class="font-weight-bold text-danger">*</span></label>
+				<input type="number" class="form-control" id="height" name="height" placeholder="Type the height of the product" min="0" value="{{ old('height') }}" required />
 			</div>
 			<div class="form-group">
 				<label for="price">Price <span class="font-weight-bold text-danger">*</span></label>

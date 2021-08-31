@@ -12,9 +12,9 @@
 					{{ $product->description }}<br><br><br>
 				</div>
 				<div class="f-18 text-adaptive">
-					Size: {{ $product->size }}<br>
-					Price: Rp {{ number_format($product->price, 0, ',', '.') }}
-				</div><br>
+					Size: {{ $product->width }} x {{ $product->height }} cm<br><br>
+					Rp {{ number_format($product->price, 0, '.', ',') }}
+				</div><br><br>
 
 				<form action="{{ route('addtoCart') }}" method="POST" enctype="multipart/form-data" id="add-to-cart">
 					@csrf

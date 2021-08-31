@@ -75,16 +75,18 @@ class AdminProductController extends Controller
 		$request->validate([
 			'name' => 'required',
 			'description' => 'required',
-			'size' => 'required|numeric',
+			'width' => 'required|numeric',
+			'height' => 'required|numeric',
 			'price' => 'required|numeric',
 			'product_category_id' => 'required|numeric',
-			'picture' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
+			'picture' => 'required|file|image|mimes:jpeg,png,jpg|max:8192',
 		]);
 
 		$product = Product::create([
 			'name' => $request->name,
 			'description' => $request->description,
-			'size' => $request->size,
+			'width' => $request->width,
+			'height' => $request->height,
 			'price' => $request->price,
 			'product_category_id' => $request->product_category_id,
 			'status' => 'A',
@@ -114,7 +116,8 @@ class AdminProductController extends Controller
 			'id' => 'required',
 			'name' => 'required',
 			'description' => 'required',
-			'size' => 'required|numeric',
+			'width' => 'required|numeric',
+			'height' => 'required|numeric',
 			'price' => 'required|numeric',
 			'product_category_id' => 'required|numeric',
 		]);
@@ -122,7 +125,8 @@ class AdminProductController extends Controller
 		$product = Product::find($request->id);
 		$product->name = $request->name;
 		$product->description = $request->description;
-		$product->size = $request->size;
+		$product->width = $request->width;
+		$product->height = $request->height;
 		$product->price = $request->price;
 		$product->product_category_id = $request->product_category_id;
 		$product->save();
