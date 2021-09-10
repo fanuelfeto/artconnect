@@ -4,7 +4,7 @@
 	<meta charset="utf-8" >
 	<title>@yield('title') | Artconnect</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="{{ asset('i/favicon.png') }}" type="image/x-icon">
+	<link rel="icon" href="{{ asset('images/main-logo.jpeg') }}" type="image/x-icon">
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Dosis:100,200,300,400,600,500,700,800,900|Open+Sans:100,200,300,400,500,600,700,800,900&amp;subset=latin" rel="stylesheet">
 	<!-- Bootstrap 4.3.1 CSS -->

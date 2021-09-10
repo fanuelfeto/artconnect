@@ -20,14 +20,14 @@
         <header class="py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-black">
-                    <h1 class="display-4 fw-bolder">Paintings Catalogue</h1>
+                    <h2 class="display-4">Paintings Catalogue</h2>
                     <p class="lead fw-normal text-black-50 mb-0">Pick your favorite with good price</p>
                 </div>
             </div>
         </header>
         <!-- Section-->
         <section class="py-5">
-            <div class="container px-4 px-lg-5 mt-5">
+            <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                     @foreach( $products as $product )
                     <div class="col mb-5">

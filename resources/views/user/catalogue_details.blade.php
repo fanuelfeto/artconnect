@@ -9,7 +9,7 @@
 			<div class="col-lg-5 col-md-6 pb-60 pb-lg-0 inner2" data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">
 				<h2 class="mt-55 mb-30 small">{{ $product->name }}</h2>
 				<div class="f-22 color-heading text-adaptive">
-					{{ $product->description }}<br><br><br>
+					{{ $product->description }}<br><br>
 				</div>
 				<div class="f-18 text-adaptive">
 					Size: {{ $product->width }} x {{ $product->height }} cm<br><br>
