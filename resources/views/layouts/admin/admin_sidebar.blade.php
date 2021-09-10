@@ -1,5 +1,5 @@
 <div class="c-sidebar-brand d-lg-down">
-	<img src="{{ asset('images/main-logo.jpeg') }}" class="c-sidebar-brand-full" width="70" height="46" />
+	<img src="{{ asset('images/main-logo.jpeg') }}" class="c-sidebar-brand-full" width="70" height="70" />
 	<img src="{{ asset('images/main-logo.jpeg') }}" class="c-sidebar-brand-minimized" width="46" height="46" />
 </div>
 <ul class="c-sidebar-nav">
@@ -49,8 +49,8 @@
 	</li>
 
 	<li class="c-sidebar-nav-item">
-		<a class="c-sidebar-nav-link {{ Request::segment(4) === 'orders' ? 'c-active' : null }}" href="{{ route('admin.product.showOrders') }}">
-			<i class="c-sidebar-nav-icon"></i>
+		<a class="c-sidebar-nav-link {{ Request::segment(4) === 'orders' ? 'c-active' : null }}" href="{{ route('admin.order.index') }}">
+			<i class="c-sidebar-nav-icon cil-library"></i>
 			Orders
 		</a>
 	</li>

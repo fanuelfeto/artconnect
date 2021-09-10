@@ -32,6 +32,9 @@ Route::post('upload-payment/','PaymentController@uploadPayment')->name('payment.
 Route::post('cancel-order/','PaymentController@cancelOrder')->name('payment.cancelOrder');
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
+	Route::get('', function() {
+		return redirect()->route('admin.dashboard');
+	});
 
 	/* Dashboard Section */
 	Route::get('dashboard','AdminController@dashboard')->name('dashboard');
@@ -46,7 +49,6 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
 		Route::get('furnitures','AdminProductController@showFurnitures')->name('showFurnitures');
 		Route::get('paintings','AdminProductController@showPaintings')->name('showPaintings');
 		Route::get('sculptures','AdminProductController@showSculptures')->name('showSculptures');
-		Route::get('orders','AdminProductController@showOrders')->name('showOrders');
 		
 		Route::get('create','AdminProductController@showCreateForm')->name('showCreateForm');
 		Route::post('create','AdminProductController@create')->name('create');
@@ -58,6 +60,14 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
 		Route::get('gallery/{id}','AdminProductController@showGallery')->name('showGallery');
 		Route::post('gallery/create','AdminProductController@createGallery')->name('createGallery');
 		Route::post('gallery/delete','AdminProductController@deleteGallery')->name('deleteGallery');
+	});
+
+	/* Order Section */
+	Route::prefix('order')->name('order.')->group(function() {
+		Route::get('','AdminOrderController@index')->name('index');
+		Route::get('details/{id}','AdminOrderController@details')->name('details');
+		Route::get('edit/{id}','AdminOrderController@showEditForm')->name('showEditForm');
+		Route::post('update','AdminOrderController@update')->name('update');
 	});
 
 	/* Auth Section | Login | Logout | Register */
