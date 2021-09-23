@@ -59,7 +59,13 @@
 			@forelse ($highlights as $highlight)
 			<div class="col-lg-3 col-md-5 col-sm-6" data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">
 				<div class="mx-auto mb-30 mw-270 h-160 d-flex justify-content-center align-items-center">
-					<a href="{{ route('catalogueDetails',['id' => $highlight->id])}}"><img src="{{ asset('images/products/'.$highlight->productGallery()->first()->picture ) }}" alt="" style="width:50%;height:70%;"/></a>
+					<a href="{{ route('catalogueDetails',['id' => $highlight->id])}}">
+						@if ($highlight->productGallery()->first())
+						<img src="{{ asset('images/products/'.$highlight->productGallery()->first()->picture ) }}" alt="" style="width:50%; height:70%;" />
+						@else
+						<img src="{{ asset('images/no_image_available_500_x_500.svg') }}" class="bg-light" alt="" style="width:50%; height:70%;" />
+						@endif
+					</a>
 				</div>
 			</div>
 			@empty
